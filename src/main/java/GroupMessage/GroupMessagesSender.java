@@ -30,8 +30,8 @@ public class GroupMessagesSender {
 
     protected String receiverContactName = "Sony"; //Receiver Contact Name (display name)
     protected String receiverContactPhoneNumber = "+380990541957"; //Receiver Contact Phone Number(real number)
-    protected String anotherGystContactName = "Nick"; //Gyst3 Contact Name (display name)
-    protected String anotherGystContactPhoneNumber = "+380501589853"; //Gyst3 Contact Phone Number(real number)
+    protected String anotherGystContactName = "Gyst3"; //Gyst3 Contact Name (display name)
+    protected String anotherGystContactPhoneNumber = "+380997777584"; //Gyst3 Contact Phone Number(real number)
     protected String messageFromSender = "Message from Sender"; //counter of messageFromSender
     protected String messageFromReceiver = "Message from Receiver"; //message that send Receiver
     protected String messageSubject = "MySubject"; //message Subject
