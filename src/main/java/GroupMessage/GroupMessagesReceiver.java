@@ -396,20 +396,20 @@ public class GroupMessagesReceiver {
         //Check result
         conversationSubject = AppiumCommon.waitForVisible(driver,By.id("com.gystapp.gyst:id/conversation_header_subject"));
         conversationMessage = AppiumCommon.waitForVisible(driver, By.xpath("//android.widget.TextView[contains(@text,'" + senderContactName + " added " + anotherGystContactName + "')]"),180);
+        el = AppiumCommon.waitForVisible(driver,By.id("com.gystapp.gyst:id/conversation_header_name"),180);
+        while (!el.getText().equals(anotherGystContactName+", "+senderContactName) && !el.getText().equals(senderContactName+", "+anotherGystContactName)){
+            el = AppiumCommon.waitForVisible(driver,By.id("com.gystapp.gyst:id/conversation_header_name"),180);
+            //System.out.println(el.getText());
+            Thread.sleep(1000); //wait 1 second and refresh the screen
+        }
+        System.out.println(profileName+ " group participants correct");
+
         if(AppiumCommon.isElementPresent(driver,By.xpath("//android.widget.TextView[contains(@text,'"+ senderContactName +" added "+ anotherGystContactName +"')]")) && AppiumCommon.waitForValue(conversationSubject,180).equals(messageSubject+"2")){
             Logging.update(logFileName, "Participants change: " + senderContactName + " added " + anotherGystContactName);
             Logging.update(logFileName, "Topic: " + messageSubject + "2");
         }
         else {Logging.update(logFileName, "Participants change didn't presented");}
         Logging.update(logFileName, "");
-
-        //Checking group participants
-        el = AppiumCommon.waitForVisible(driver,By.id("com.gystapp.gyst:id/conversation_header_name"),180);
-        System.out.println("Receiver - "+el.getText());
-        if(el.getText().equals(anotherGystContactName+", "+senderContactName) || el.getText().equals(senderContactName+", "+anotherGystContactName) ){
-            System.out.println(profileName+ " group participants correct");
-        }
-        else {System.out.println(profileName+ " group participants fail");}
 
         //Scenario 29: From Gyst2, in conversation 1
         Logging.update(logFileName, "Scenario 29 started:");

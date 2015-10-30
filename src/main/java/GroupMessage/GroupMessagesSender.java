@@ -148,6 +148,7 @@ public class GroupMessagesSender {
         el.click(); // TO:
         el = AppiumCommon.waitForVisible(driver,By.id("com.gystapp.gyst:id/tv_search"));
         el.sendKeys(receiverContactPhoneNumber); //enter GystContact to search
+        Thread.sleep(3000);
         el = AppiumCommon.waitForVisible(driver, By.xpath("//android.widget.TextView[contains(@text,'" +receiverContactName+ "')]"));
         el.click(); // select GystContact
         Thread.sleep(3000);
@@ -271,6 +272,7 @@ public class GroupMessagesSender {
         el.click(); // TO:
         el = AppiumCommon.waitForVisible(driver,By.id("com.gystapp.gyst:id/tv_search"));
         el.sendKeys(receiverContactPhoneNumber); //enter GystContact to search
+        Thread.sleep(3000);
         el = AppiumCommon.waitForVisible(driver, By.xpath("//android.widget.TextView[contains(@text,'" +receiverContactName+ "')]"));
         el.click(); // select GystContact
         Thread.sleep(3000);
@@ -332,11 +334,12 @@ public class GroupMessagesSender {
         //Add new contact
         el = AppiumCommon.waitForVisible(driver,By.id("com.gystapp.gyst:id/tv_search"));
         el.sendKeys(anotherGystContactName); //enter GystContact to search
-        el.click();
-        driver.hideKeyboard();
+        Thread.sleep(3000);
+        /*el.click();
+        driver.hideKeyboard();*/
         el = AppiumCommon.waitForVisible(driver, By.xpath("//android.widget.TextView[contains(@text,'" +anotherGystContactName+ "')]"));
         el.click(); // select GystContact
-        Thread.sleep(1000);
+        Thread.sleep(3000);
         if(AppiumCommon.isElementPresent(driver, By.id("android:id/custom"))){
             //Choose way to communicate
             el = AppiumCommon.waitForVisible(driver, By.xpath("//android.widget.TextView[contains(@text,'"+anotherGystContactPhoneNumber+" (Other)')]"));
@@ -440,11 +443,12 @@ public class GroupMessagesSender {
         //Add Gyst3 contact
         el = AppiumCommon.waitForVisible(driver,By.id("com.gystapp.gyst:id/tv_search"));
         el.sendKeys(anotherGystContactName); //enter GystContact to search
-        el.click();
-        driver.hideKeyboard();
+        Thread.sleep(3000);
+        /*el.click();
+        driver.hideKeyboard();*/
         el = AppiumCommon.waitForVisible(driver, By.xpath("//android.widget.TextView[contains(@text,'" +anotherGystContactName+ "')]"));
         el.click(); // select GystContact
-        Thread.sleep(1000);
+        Thread.sleep(3000);
         if(AppiumCommon.isElementPresent(driver, By.id("android:id/custom"))){
             //Choose way to communicate
             el = AppiumCommon.waitForVisible(driver, By.xpath("//android.widget.TextView[contains(@text,'"+anotherGystContactPhoneNumber+" (Other)')]"));
@@ -471,7 +475,6 @@ public class GroupMessagesSender {
 
         //Checking group participants
         el = AppiumCommon.waitForVisible(driver,By.id("com.gystapp.gyst:id/conversation_header_name"),180);
-        System.out.println("Sender - "+el.getText());
         if(el.getText().equals(receiverContactName+", "+anotherGystContactName ) || el.getText().equals(anotherGystContactName+", "+receiverContactName )){
             System.out.println(profileName+ " group participants correct");
         }
@@ -514,11 +517,12 @@ public class GroupMessagesSender {
         //Add new contact
         el = AppiumCommon.waitForVisible(driver,By.id("com.gystapp.gyst:id/tv_search"));
         el.sendKeys(testContact); //enter non-Gyst Contact to search
-        el.click();
-        driver.hideKeyboard();
+        Thread.sleep(3000);
+        /*el.click();
+        driver.hideKeyboard();*/
         el = AppiumCommon.waitForVisible(driver, By.xpath("//android.widget.TextView[contains(@text,'" +testContact+ "')]"));
         el.click(); // select non-Gyst Contact
-        Thread.sleep(1000);
+        Thread.sleep(3000);
         if(AppiumCommon.isElementPresent(driver, By.id("android:id/custom"))){
             //Choose way to communicate
             el = AppiumCommon.waitForVisible(driver, By.xpath("//android.widget.TextView[contains(@text,'"+testContactPhone+" (Other)')]"));
@@ -534,6 +538,7 @@ public class GroupMessagesSender {
         }
         //Checking group participants
         el = AppiumCommon.waitForVisible(driver,By.id("com.gystapp.gyst:id/conversation_header_name"));
+        //System.out.println(el.getText());
         if(el.getText().contains(receiverContactName) && el.getText().contains(anotherGystContactName) && el.getText().contains(testContact)){
             Logging.update(logFileName, "Participants change: " + profileName + " add " + testContact);
         }
