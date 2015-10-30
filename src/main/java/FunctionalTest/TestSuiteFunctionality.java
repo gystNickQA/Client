@@ -16,7 +16,7 @@ import org.junit.runners.Suite;
         CheckSelections.class, //need be at least on task, event, contact, dialog with message to start
         TimeSelect.class, //test time selection on task
         ChangePhoto.class, //change photo in contact
-        Archiving.class, //test archiving 1 day need to be at least one old dialoge with message
+        Archiving.class, //test archiving 1 day need to be at least one old dialog with message
         LoginAutomatically.class
 }
 )
