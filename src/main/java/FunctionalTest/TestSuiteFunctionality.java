@@ -17,7 +17,7 @@ import org.junit.runners.Suite;
         TimeSelect.class, //test time selection on task
         ChangePhoto.class, //change photo in contact
         Archiving.class, //test archiving 1 day need to be at least one old dialoge with message
-        LoginAutomatically.class,
+        LoginAutomatically.class
 }
 )
 public class TestSuiteFunctionality {
