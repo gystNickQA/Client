@@ -39,7 +39,7 @@ public class Archiving extends AppiumCommon {
         if(AppiumCommon.isElementPresent(driver,By.xpath("//android.widget.TextView[contains(@text,'No archive')]"))){
             el = AppiumCommon.waitForVisible(driver, By.xpath("//android.widget.TextView[contains(@text,'No archive')]"));
             el.click(); //open to choose age
-            el = AppiumCommon.waitForVisible(driver, By.xpath("//android.widget.TextView[contains(@text,'1 day')]"));
+            el = AppiumCommon.waitForVisible(driver, By.xpath("//android.widget.TextView[contains(@text,'1 week')]"));
             el.click(); //select 1 day
         }
         el = AppiumCommon.waitForVisible(driver,By.id("com.gystapp.gyst:id/bt_save"));
