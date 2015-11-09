@@ -55,6 +55,8 @@ public class AboutAndFeedback extends AppiumCommon{
 
         el = AppiumCommon.waitForVisible(driver,By.id("com.gystapp.gyst:id/feedbackComment"));
         el.sendKeys("Good App"); //comment
+        el.click();
+        driver.hideKeyboard();
         el = AppiumCommon.waitForVisible(driver,By.id("com.gystapp.gyst:id/btn_feedback_send"));
         el.click(); //Send
 
