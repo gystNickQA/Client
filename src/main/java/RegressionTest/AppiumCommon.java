@@ -41,7 +41,7 @@ public class AppiumCommon {
     protected AppiumDriver driver;
     protected String phoneNumber = "636810727"; //your own phone number
     protected String gystContactName = "Nick"; //Gyst Contact Name
-    protected String gystContactPhoneNumber = "+380501589853"; //Gyst Contact Phone Number(real number)
+    protected String gystContactPhoneNumber = "+38986427920"; //Gyst Contact Phone Number(real number)
     protected String country = "Ukraine"; //your country
     protected String eventName = "TestEventName"; //event Name
     protected String eventLocation = "TestEventLocation"; //event Location
@@ -65,7 +65,7 @@ public class AppiumCommon {
     public static File file;
 
     //Globals for the application to be tested
-    public static final String apkToTest = "0.9.1-dev6.apk";
+    public static final String apkToTest = "0.9.2-release.apk";
     public static final String deviceToTestOn = "Samsung_g360";
     public static final String uidOfDevice = "4d005a57c0aa1200";
     //public static final String deviceToTestOn = "sony-xperia_u";
