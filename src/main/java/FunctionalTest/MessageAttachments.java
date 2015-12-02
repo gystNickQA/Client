@@ -91,7 +91,7 @@ public class MessageAttachments extends AppiumCommon {
         el.click(); //OK
         //Enter message
         el = AppiumCommon.waitForVisible(driver, By.xpath("//android.widget.FrameLayout[contains(@resource-id,'compose_message_compose_message')]//android.widget.EditText"));
-        el.sendKeys(messageContent);
+        el.sendKeys(messageContent + " Contact");
         el.click();
         driver.hideKeyboard();
         //Attach contact
@@ -107,18 +107,30 @@ public class MessageAttachments extends AppiumCommon {
         el.click(); //OK
         el = AppiumCommon.waitForVisible(driver,By.id("com.gystapp.gyst:id/compose_menu_send"));
         el.click(); //Send
+        System.out.println("First message with contact was sent");
 
-        Thread.sleep(2000);
+        //Reset search
+        el = AppiumCommon.waitForVisible(driver,By.id("com.gystapp.gyst:id/bt_toolbar_find"));
+        el.click();
+        el = AppiumCommon.waitForVisible(driver,By.id("com.gystapp.gyst:id/search_reset"));
+        el.click();
+        el = AppiumCommon.waitForVisible(driver,By.id("com.gystapp.gyst:id/search_save"));
+        el.click();
 
+        //Check that second dialog was created
+        Boolean resultFirstMessage = false;
+        while (!resultFirstMessage){
+            el = AppiumCommon.waitForVisible(driver,By.xpath("//android.widget.TextView[contains(@text,'" + messageContent + " Contact')]"),180);
+            Boolean linkPresented = AppiumCommon.waitForValueMatchRegex(el, ".*https:.*"); //make sure the message content have link
+            if(linkPresented){resultFirstMessage = true;}
+        }
         //Open message
-        el = AppiumCommon.waitForVisible(driver,By.xpath("//android.widget.TextView[contains(@text,'" + messageContent + "')]"),180);
-        el.click(); //click on message
-        System.out.println("First message was sent");
-
-        //Check that first dialog was created
-        WebElement attachFileName = AppiumCommon.waitForVisible(driver, By.id("com.gystapp.gyst:id/attachment_filename"));
-        AppiumCommon.waitForSpecificTextValue(driver, attachFileName, testContact);
-        System.out.println("First message was checked");
+        el = AppiumCommon.waitForVisible(driver,By.xpath("//android.widget.TextView[contains(@text,'" + messageContent + " Contact')]"),180);
+        el.click();
+        if(AppiumCommon.isElementPresent(driver, By.xpath("//android.widget.TextView[contains(@text,'" + messageContent + " Contact')]")) ){
+            System.out.println("First message with contact was checked");
+        }
+        else {System.out.println("Second message with contact was not sent correctly");}
 
         driver.navigate().back(); //return to dialog
 
@@ -143,9 +155,6 @@ public class MessageAttachments extends AppiumCommon {
         el.click(); //Send
         System.out.println("Second message was sent");
 
-        el = AppiumCommon.waitForVisible(driver,By.id("com.gystapp.gyst:id/conversation_header_back_button"));
-        el.click(); //return back
-
         //Reset search
         el = AppiumCommon.waitForVisible(driver,By.id("com.gystapp.gyst:id/bt_toolbar_find"));
         el.click();
@@ -155,11 +164,11 @@ public class MessageAttachments extends AppiumCommon {
         el.click();
 
         //Check that second dialog was created
-        Boolean result = false;
-        while (!result){
+        Boolean resultSecondMessage = false;
+        while (!resultSecondMessage){
             el = AppiumCommon.waitForVisible(driver,By.xpath("//android.widget.TextView[contains(@text,'" + messageContent + " Event')]"),180);
             Boolean linkPresented = AppiumCommon.waitForValueMatchRegex(el, ".*https:.*"); //make sure the message content have link
-            if(linkPresented){result = true;}
+            if(linkPresented){resultSecondMessage = true;}
         }
         //Open message
         el = AppiumCommon.waitForVisible(driver,By.xpath("//android.widget.TextView[contains(@text,'" + messageContent + " Event')]"),180);
@@ -168,7 +177,7 @@ public class MessageAttachments extends AppiumCommon {
             System.out.println("Second message with event was checked");
         }
 
-        else {System.out.println("Second message with event was not sent");}
+        else {System.out.println("Second message with event was not sent correctly");}
         System.out.println("---");
     }
 

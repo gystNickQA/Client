@@ -85,24 +85,21 @@ public class ScheduleMessage extends AppiumCommon {
         el = AppiumCommon.waitForVisible(driver, By.id("com.gystapp.gyst:id/done"));
         el.click(); //Done
 
-        el = AppiumCommon.waitForVisible(driver, By.id("com.gystapp.gyst:id/datetime_picker_button_ok"));
-        el.click(); //OK
-
-        el = AppiumCommon.waitForVisible(driver, By.id("com.gystapp.gyst:id/compose_menu_send"));
-        el.click(); //Send
+        el = AppiumCommon.waitForVisible(driver, By.id("com.gystapp.gyst:id/datetime_picker_button_send_now"));
+        el.click(); //Send as scheduled
 
         //Check schedule presented
         if(AppiumCommon.isElementPresent(driver,By.xpath("//android.widget.TextView[contains(@text,'Sheduled message')]/following::android.widget.TextView[contains(@text,'Scheduled for')]"))){
             System.out.println("Schedule message was checked");
             el = AppiumCommon.waitForVisible(driver,By.xpath("//android.widget.TextView[contains(@text,'Sheduled message')]/following::android.widget.TextView[contains(@text,'Scheduled for')]"));
             el.click(); //open schedule settings
-            el = AppiumCommon.waitForVisible(driver, By.id("com.gystapp.gyst:id/datetime_picker_button_dismiss_msg"));
-            el.click(); //Dismiss
+            el = AppiumCommon.waitForVisible(driver, By.id("com.gystapp.gyst:id/datetime_picker_button_ok"));
+            el.click(); //Send now
             Thread.sleep(1000); //wait 1 sec
-            if(!AppiumCommon.isElementPresent(driver,By.xpath("//android.widget.TextView[contains(@text,'Sheduled message')]"))){
-                System.out.println("Schedule message was dismissed");
+            if(AppiumCommon.isElementPresent(driver,By.xpath("//android.widget.TextView[contains(@text,'Sheduled message')]"))){
+                System.out.println("Schedule message was sent now correctly");
             }
-            else{System.out.println("Schedule message was not dismissed");}
+            else{System.out.println("Schedule message was not sent");}
         }
         else {System.out.println("Schedule message was not created");}
 
