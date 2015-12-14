@@ -174,6 +174,8 @@ public class TypesOfImages extends AppiumCommon {
         el.click(); // TO:
         el = AppiumCommon.waitForVisible(driver,By.id("com.gystapp.gyst:id/tv_search"));
         el.sendKeys(gystContactName); //enter gystContactPhoneNumber to search
+        el.click();
+        driver.hideKeyboard();
         Thread.sleep(1000); //wait 1 sec
         el = AppiumCommon.waitForVisible(driver, By.xpath("//android.widget.TextView[contains(@text,'" + gystContactName + "')]"));
         el.click(); // select gystContact

@@ -3,7 +3,6 @@ package FunctionalTest;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
-
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
         EventRecurrence.class, //test recurrence. Make sure that all calendar are enable

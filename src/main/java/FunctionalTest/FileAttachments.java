@@ -142,7 +142,7 @@ public class FileAttachments extends AppiumCommon {
             }
             else {System.out.println("Message with black photo was not sent");}
         }
-
+        else {System.out.println("Element is not presented");}
         System.out.println("---");
 
     }
