@@ -166,7 +166,7 @@ public class GroupMessagesSender {
             el.click(); //OK
         }
         //Enter message
-        el = AppiumCommon.waitForVisible(driver, By.xpath("//android.widget.FrameLayout[contains(@resource-id,'compose_message_compose_message')]//android.widget.EditText"));
+        el = AppiumCommon.waitForVisible(driver, By.xpath("//android.widget.FrameLayout[contains(@resource-id,'converse_compose_message')]//android.widget.EditText"));
         el.sendKeys(messageFromSender+ counterMessageFromSender);
         el = AppiumCommon.waitForVisible(driver,By.id("com.gystapp.gyst:id/compose_menu_send"));
         el.click(); //Send
@@ -186,10 +186,10 @@ public class GroupMessagesSender {
         el = AppiumCommon.waitForVisible(driver,By.id("com.gystapp.gyst:id/bt_toolbar_converse"));
         el.click();// click to open converse
         //Enter subject
-        el = AppiumCommon.waitForVisible(driver, By.xpath("//android.widget.FrameLayout[contains(@resource-id,'compose_message_subject')]//android.widget.EditText"));
+        el = AppiumCommon.waitForVisible(driver, By.xpath("//android.widget.FrameLayout[contains(@resource-id,'converse_subject')]//android.widget.EditText"));
         el.sendKeys(messageSubject);
         //Enter message
-        el = AppiumCommon.waitForVisible(driver, By.xpath("//android.widget.FrameLayout[contains(@resource-id,'compose_message_compose_message')]//android.widget.EditText"));
+        el = AppiumCommon.waitForVisible(driver, By.xpath("//android.widget.FrameLayout[contains(@resource-id,'converse_compose_message')]//android.widget.EditText"));
         el.sendKeys(messageFromSender+ counterMessageFromSender);
         el = AppiumCommon.waitForVisible(driver,By.id("com.gystapp.gyst:id/compose_menu_send"));
         el.click(); //Send
@@ -221,10 +221,10 @@ public class GroupMessagesSender {
         el = AppiumCommon.waitForVisible(driver,By.id("com.gystapp.gyst:id/bt_toolbar_converse"));
         el.click();// click to open converse
         //Clear subject
-        el = AppiumCommon.waitForVisible(driver, By.xpath("//android.widget.FrameLayout[contains(@resource-id,'compose_message_subject')]//android.widget.EditText"));
+        el = AppiumCommon.waitForVisible(driver, By.xpath("//android.widget.FrameLayout[contains(@resource-id,'converse_subject')]//android.widget.EditText"));
         el.clear();
         //Enter message
-        el = AppiumCommon.waitForVisible(driver, By.xpath("//android.widget.FrameLayout[contains(@resource-id,'compose_message_compose_message')]//android.widget.EditText"));
+        el = AppiumCommon.waitForVisible(driver, By.xpath("//android.widget.FrameLayout[contains(@resource-id,'converse_compose_message')]//android.widget.EditText"));
         el.sendKeys(messageFromSender+ counterMessageFromSender);
         el = AppiumCommon.waitForVisible(driver,By.id("com.gystapp.gyst:id/compose_menu_send"));
         el.click(); //Send
@@ -243,11 +243,11 @@ public class GroupMessagesSender {
         el = AppiumCommon.waitForVisible(driver,By.id("com.gystapp.gyst:id/bt_toolbar_converse"));
         el.click();// click to open converse
         //Clear subject
-        el = AppiumCommon.waitForVisible(driver, By.xpath("//android.widget.FrameLayout[contains(@resource-id,'compose_message_subject')]//android.widget.EditText"));
+        el = AppiumCommon.waitForVisible(driver, By.xpath("//android.widget.FrameLayout[contains(@resource-id,'converse_subject')]//android.widget.EditText"));
         el.clear();
         el.sendKeys(" ");
         //Enter message
-        el = AppiumCommon.waitForVisible(driver, By.xpath("//android.widget.FrameLayout[contains(@resource-id,'compose_message_compose_message')]//android.widget.EditText"));
+        el = AppiumCommon.waitForVisible(driver, By.xpath("//android.widget.FrameLayout[contains(@resource-id,'converse_compose_message')]//android.widget.EditText"));
         el.sendKeys(messageFromSender + counterMessageFromSender);
         el = AppiumCommon.waitForVisible(driver,By.id("com.gystapp.gyst:id/compose_menu_send"));
         el.click(); //Send
@@ -290,10 +290,10 @@ public class GroupMessagesSender {
             el.click(); //OK
         }
         //Clear subject
-        el = AppiumCommon.waitForVisible(driver, By.xpath("//android.widget.FrameLayout[contains(@resource-id,'compose_message_subject')]//android.widget.EditText"));
+        el = AppiumCommon.waitForVisible(driver, By.xpath("//android.widget.FrameLayout[contains(@resource-id,'converse_subject')]//android.widget.EditText"));
         el.sendKeys(messageSubject + "2");
         //Enter message
-        el = AppiumCommon.waitForVisible(driver, By.xpath("//android.widget.FrameLayout[contains(@resource-id,'compose_message_compose_message')]//android.widget.EditText"));
+        el = AppiumCommon.waitForVisible(driver, By.xpath("//android.widget.FrameLayout[contains(@resource-id,'converse_compose_message')]//android.widget.EditText"));
         el.sendKeys(messageFromSender + counterMessageFromSender);
         el = AppiumCommon.waitForVisible(driver,By.id("com.gystapp.gyst:id/compose_menu_send"));
         el.click(); //Send

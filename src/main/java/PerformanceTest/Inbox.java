@@ -49,7 +49,7 @@ public class Inbox extends AppiumCommon{
                 el.click(); //OK
             }
 
-            el = AppiumCommon.waitForVisible(driver, By.xpath("//android.widget.FrameLayout[contains(@resource-id,'compose_message_compose_message')]//android.widget.EditText"));
+            el = AppiumCommon.waitForVisible(driver, By.xpath("//android.widget.FrameLayout[contains(@resource-id,'converse_compose_message')]//android.widget.EditText"));
             el.sendKeys(messageContent + i); //Enter message with counter i
             el.click();
             driver.hideKeyboard();

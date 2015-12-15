@@ -97,7 +97,7 @@ public class Contacts extends AppiumCommon {
         //Open Converse by phone click
         el = AppiumCommon.waitForVisible(driver, By.xpath("//android.widget.TextView[contains(@text,'"+testContactPhone+"')]/following::android.widget.ImageButton"));
         el.click(); //click on phone number to open converse
-        el = AppiumCommon.waitForVisible(driver, By.xpath("//android.widget.FrameLayout[contains(@resource-id,'compose_message_compose_message')]//android.widget.EditText"));
+        el = AppiumCommon.waitForVisible(driver, By.xpath("//android.widget.FrameLayout[contains(@resource-id,'converse_compose_message')]//android.widget.EditText"));
         el.click(); //click to show keyboard
         driver.hideKeyboard();
         el = AppiumCommon.waitForVisible(driver, By.id("com.gystapp.gyst:id/compose_message_to"));
@@ -111,7 +111,7 @@ public class Contacts extends AppiumCommon {
         el.click(); //click on another parameters
         el = AppiumCommon.waitForVisible(driver, By.xpath("//android.widget.TextView[contains(@text,'Share')]"));
         el.click(); //click Share
-        el = AppiumCommon.waitForVisible(driver, By.xpath("//android.widget.FrameLayout[contains(@resource-id,'compose_message_compose_message')]//android.widget.EditText"));
+        el = AppiumCommon.waitForVisible(driver, By.xpath("//android.widget.FrameLayout[contains(@resource-id,'converse_compose_message')]//android.widget.EditText"));
         el.click(); //click to show keyboard
         driver.hideKeyboard();
         WebElement attachFileName = AppiumCommon.waitForVisible(driver, By.id("com.gystapp.gyst:id/attachment_filename"));

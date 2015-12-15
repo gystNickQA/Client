@@ -94,7 +94,7 @@ public class TypesOfImages extends AppiumCommon {
         el = AppiumCommon.waitForVisible(driver,By.xpath("//android.widget.Button[contains(@text,'OK')]"));
         el.click(); //OK
         //Enter message
-        el = AppiumCommon.waitForVisible(driver, By.xpath("//android.widget.FrameLayout[contains(@resource-id,'compose_message_compose_message')]//android.widget.EditText"));
+        el = AppiumCommon.waitForVisible(driver, By.xpath("//android.widget.FrameLayout[contains(@resource-id,'converse_compose_message')]//android.widget.EditText"));
         el.sendKeys(messageContent + " Files");
         el.click();
         driver.hideKeyboard();
@@ -190,10 +190,10 @@ public class TypesOfImages extends AppiumCommon {
         el = AppiumCommon.waitForVisible(driver,By.xpath("//android.widget.Button[contains(@text,'OK')]"));
         el.click(); //OK
         //Enter subject
-        el = AppiumCommon.waitForVisible(driver,By.id("com.gystapp.gyst:id/compose_message_subject"));
+        el = AppiumCommon.waitForVisible(driver,By.id("com.gystapp.gyst:id/converse_subject"));
         el.sendKeys(messageSubject);
         //Enter message
-        el = AppiumCommon.waitForVisible(driver, By.xpath("//android.widget.FrameLayout[contains(@resource-id,'compose_message_compose_message')]//android.widget.EditText"));
+        el = AppiumCommon.waitForVisible(driver, By.xpath("//android.widget.FrameLayout[contains(@resource-id,'converse_compose_message')]//android.widget.EditText"));
         el.sendKeys(messageContent);
         el.click();
         driver.hideKeyboard();

@@ -37,7 +37,7 @@ public class ShareContact extends AppiumCommon {
         el.click();//click share contact
 
         //Check message content
-        el = AppiumCommon.waitForVisible(driver, By.xpath("//android.widget.FrameLayout[contains(@resource-id,'compose_message_compose_message')]//android.widget.EditText"));
+        el = AppiumCommon.waitForVisible(driver, By.xpath("//android.widget.FrameLayout[contains(@resource-id,'converse_compose_message')]//android.widget.EditText"));
         el.click();//click share contact
         driver.hideKeyboard();
         WebElement attachFileName = AppiumCommon.waitForVisible(driver, By.id("com.gystapp.gyst:id/attachment_filename"));

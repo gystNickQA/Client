@@ -50,8 +50,21 @@ public class AboutAndFeedback extends AppiumCommon{
         int additionalWidth = SetStars(3,el);
         driver.swipe(StarsPosition.getX(),StarsPosition.getY(),StarsPosition.getX()+ additionalWidth,StarsPosition.getY(),700);
 
+        //Set 3 stars (Is it easy to use)
+        //Identify stars position
+        el = AppiumCommon.waitForVisible(driver,By.id("com.gystapp.gyst:id/lookAndFeel"));
+        StarsPosition = el.getLocation();
+        additionalWidth = SetStars(3, el);
+        driver.swipe(StarsPosition.getX(),StarsPosition.getY(),StarsPosition.getX()+ additionalWidth,StarsPosition.getY(),700);
+
+        //Set 3 stars (Is it easy to use)
+        //Identify stars position
+        el = AppiumCommon.waitForVisible(driver,By.id("com.gystapp.gyst:id/quickEnough"));
+        StarsPosition = el.getLocation();
+        additionalWidth = SetStars(3, el);
+        driver.swipe(StarsPosition.getX(),StarsPosition.getY(),StarsPosition.getX()+ additionalWidth,StarsPosition.getY(),700);
+
         scrollingDown();
-        //scrollDown(driver.findElementById("com.gystapp.gyst:id/scrollView")); //scroll down
 
         el = AppiumCommon.waitForVisible(driver,By.id("com.gystapp.gyst:id/feedbackComment"));
         el.sendKeys("Good App"); //comment
