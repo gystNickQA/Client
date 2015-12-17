@@ -65,7 +65,7 @@ public class AppiumCommon {
     public static File file;
 
     //Globals for the application to be tested
-    public static final String apkToTest = "0.9.6-release.apk";
+    public static final String apkToTest = "0.9.7-release.apk";
     public static final String deviceToTestOn = "Samsung_g360";
     public static final String uidOfDevice = "4d005a57c0aa1200";
     //public static final String deviceToTestOn = "sony-xperia_u";

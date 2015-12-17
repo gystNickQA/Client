@@ -5,7 +5,7 @@ import org.junit.runners.Suite;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-        //Registration.class, //registration (should be first)
+        Registration.class, //registration (should be first)
         Contacts.class,
         Task.class,
         Calendar.class,
