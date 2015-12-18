@@ -121,7 +121,7 @@ public class FileAttachments extends AppiumCommon {
 
         el = AppiumCommon.waitForVisible(driver, By.id("com.gystapp.gyst:id/compose_menu_send"));
         el.click(); //Send
-
+        Thread.sleep(3000); //wait 3 sec
         //Open message
         el = AppiumCommon.waitForVisible(driver, By.xpath("//android.widget.TextView[contains(@text,'" + messageContent + "')]"), 180);
         el.click(); //click on message

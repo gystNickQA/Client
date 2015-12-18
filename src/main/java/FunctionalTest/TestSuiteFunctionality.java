@@ -5,8 +5,8 @@ import org.junit.runners.Suite;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-        //EventRecurrence.class, //test recurrence. Make sure that all calendar are enable
-        //MessageAttachments.class, //test event attachment and contact attachment in messages
+        EventRecurrence.class, //test recurrence. Make sure that all calendar are enable
+        MessageAttachments.class, //test event attachment and contact attachment in messages
         FileAttachments.class, //test file attachments in messages
         TypesOfImages.class, //test different types of images in messages
         ShareContact.class, //test ability to share contact

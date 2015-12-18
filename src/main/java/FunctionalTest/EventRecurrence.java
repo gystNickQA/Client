@@ -112,7 +112,7 @@ public class EventRecurrence extends AppiumCommon {
             thirdIntervalDate = "Third Interval Date presented";
         }
 
-        System.out.println("Every3DayFor3Events were checked:");
+        System.out.println("Every7DayFor3Events were checked:");
         System.out.println(firstIntervalDate);
         System.out.println(secondIntervalDate);
         System.out.println(thirdIntervalDate);
