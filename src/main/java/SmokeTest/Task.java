@@ -27,7 +27,7 @@ public class Task extends AppiumCommon{
         el.findElement(By.name("Tasks")).click();
 
 
-        deleteAllFoundElements(By.id("com.gystapp.gyst:id/tasks_checkable_parent"),By.xpath("//android.widget.FrameLayout/android.widget.LinearLayout/android.widget.LinearLayout[4]"),taskName);
+        deleteAllFoundElements(By.id("com.gystapp.gyst:id/tasks_checkable_parent"),By.xpath("//android.widget.TextView[contains(@text,'Delete')]"),taskName);
         //Reset search criteria
         el = AppiumCommon.waitForVisible(driver,By.id("com.gystapp.gyst:id/bt_toolbar_find"));
         el.click(); //Click Search
@@ -110,7 +110,7 @@ public class Task extends AppiumCommon{
 
         //Mark completed
         driver.tap(1,driver.findElement(By.xpath("//android.widget.TextView[contains(@text,'"+taskName+"')]")),2000);
-        el = AppiumCommon.waitForVisible(driver,By.id("com.gystapp.gyst:id/events_menu_complete"));
+        el = AppiumCommon.waitForVisible(driver,By.xpath("//android.widget.FrameLayout/android.widget.LinearLayout/android.widget.LinearLayout[1]"));
         el.click(); //click Mark completed
 
         // Change priority
@@ -170,7 +170,7 @@ public class Task extends AppiumCommon{
 
         //Delete
         driver.tap(1,driver.findElement(By.xpath("//android.widget.TextView[contains(@text,'"+taskName+"')]")),2000);
-        el = AppiumCommon.waitForVisible(driver,By.id("com.gystapp.gyst:id/events_menu_delete"));
+        el = AppiumCommon.waitForVisible(driver,By.xpath("//android.widget.FrameLayout/android.widget.LinearLayout/android.widget.LinearLayout[4]"));
         el.click(); //click Delete
 
         System.out.println("Task was deleted");
