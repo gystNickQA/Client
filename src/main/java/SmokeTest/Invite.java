@@ -11,6 +11,7 @@ import RegressionTest.AppiumCommon;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 
 public class Invite extends AppiumCommon {
 
@@ -53,21 +54,25 @@ public class Invite extends AppiumCommon {
         el = AppiumCommon.waitForVisible(driver, By.id("com.gystapp.gyst:id/tv_search"));
         el.sendKeys(testContact); //search testContact
         driver.hideKeyboard();
-        el = AppiumCommon.waitForVisible(driver, By.xpath("//android.widget.TextView[contains(@text,'"+testContact+"')]/following::android.widget.Button[contains(@text,'Send')]"));
-        el.click(); //click Send
+        el = AppiumCommon.waitForVisible(driver, By.xpath("//android.widget.TextView[contains(@text,'" + testContact + "')]/following::android.widget.Button[contains(@text,'Invite')]"));
+        el.click(); //click Invite
         //Choose way to communicate
         if(AppiumCommon.isElementPresent(driver,By.id("android:id/custom"))){
-            el = AppiumCommon.waitForVisible(driver, By.xpath("//android.widget.TextView[contains(@text,'"+testContactPhone+" (Other)')]"));
+            el = AppiumCommon.waitForVisible(driver, By.xpath("//android.widget.TextView[contains(@text,'" + testContactPhone + " (Other)')]"));
             el.click(); //select phone number
-            el = AppiumCommon.waitForVisible(driver, By.id("com.gystapp.gyst:id/bt_ok"));
-            el.click(); //click OK
+            /*el = AppiumCommon.waitForVisible(driver, By.id("com.gystapp.gyst:id/bt_ok"));
+            el.click(); //click OK*/
         }
 
+        el = AppiumCommon.waitForVisible(driver, By.id("com.gystapp.gyst:id/compose_menu_send"));
+        el.click(); //click Send message
+
         //Check result
-        el = AppiumCommon.waitForVisible(driver, By.xpath("//android.view.View/android.widget.ImageButton"));
-        el.click(); //return back
-        WebElement message = AppiumCommon.waitForVisible(driver, By.xpath("//android.widget.TextView[contains(@text,'"+testContact+"')]/following::android.widget.TextView[1]"));
-        AppiumCommon.waitForSpecificTextValue(driver,message,"Invite to Gyst");
+        WebElement subject = AppiumCommon.waitForVisible(driver, By.id("com.gystapp.gyst:id/message_subject"));
+        WebElement message = AppiumCommon.waitForVisible(driver, By.id("com.gystapp.gyst:id/message_text"));
+        AppiumCommon.waitForSpecificTextValue(driver,subject,"Check out this new texting app!");
+        Boolean res = AppiumCommon.waitForValueMatchRegex(message, ".*https.*"); //make sure the message content have link on contact
+        assertTrue("Invite message didn't contain the link", res);
         System.out.println("Contact was invited");
         System.out.println("---");
 

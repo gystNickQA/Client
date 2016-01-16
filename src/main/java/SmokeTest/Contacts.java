@@ -32,8 +32,7 @@ public class Contacts extends AppiumCommon {
         el.sendKeys(testContact);
         driver.hideKeyboard();
         if (AppiumCommon.isElementPresent(driver, By.xpath("//android.widget.TextView[contains(@text,'"+testContact+"')]"))) {
-            WebElement myContact = driver.findElement(By.xpath("//android.widget.TextView[contains(@text,'"+testContact+"')]"));
-            new TouchAction(driver).longPress(myContact).release().perform();
+            driver.tap(1, driver.findElement(By.xpath("//android.widget.TextView[contains(@text,'"+testContact+"')]")), 2000);
             el = AppiumCommon.waitForVisible(driver, By.xpath("//android.widget.FrameLayout/android.widget.LinearLayout/android.widget.LinearLayout[4]"));
             el.click(); //click delete
             el = AppiumCommon.waitForVisible(driver, By.id("com.gystapp.gyst:id/bt_positive"));
@@ -154,8 +153,7 @@ public class Contacts extends AppiumCommon {
         el.sendKeys(testContactGroup);
         driver.hideKeyboard();
         if (AppiumCommon.isElementPresent(driver, By.xpath("//android.widget.TextView[contains(@text,'"+testContactGroup+"')]"))) {
-            WebElement gourp = driver.findElement(By.xpath("//android.widget.TextView[contains(@text,'"+testContactGroup+"')]"));
-            new TouchAction(driver).longPress(gourp).release().perform();
+            driver.tap(1, driver.findElement(By.xpath("//android.widget.TextView[contains(@text,'"+testContactGroup+"')]")), 2000);
             el = AppiumCommon.waitForVisible(driver, By.id("com.gystapp.gyst:id/iv_icon"));
             el.click(); //click delete
             el = AppiumCommon.waitForVisible(driver, By.id("com.gystapp.gyst:id/bt_positive"));
@@ -196,8 +194,8 @@ public class Contacts extends AppiumCommon {
         el = AppiumCommon.waitForVisible(driver,By.id("com.gystapp.gyst:id/tv_search"));
         el.sendKeys(testContact); //find contact
         driver.hideKeyboard();
-        el = AppiumCommon.waitForVisible(driver,By.xpath("//android.widget.TextView[contains(@text,'"+testContact+"')]"));
-        new TouchAction(driver).longPress(el).release().perform();
+        AppiumCommon.waitForVisible(driver,By.xpath("//android.widget.TextView[contains(@text,'"+testContact+"')]"));
+        driver.tap(1,driver.findElement(By.xpath("//android.widget.TextView[contains(@text,'"+testContact+"')]")),2000);
         el = AppiumCommon.waitForVisible(driver,By.xpath("//android.widget.Button[contains(@text,'OK')]"));
         el.click(); //OK
         el = AppiumCommon.waitForVisible(driver,By.id("com.gystapp.gyst:id/bt_save"));

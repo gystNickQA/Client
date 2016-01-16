@@ -93,7 +93,7 @@ public class Task extends AppiumCommon{
         }
         else {System.out.println("Task "+taskName+" was not created or not visible");}
 
-        //Task name
+        //Task Details
         String taskDetailsEdit = taskDetails+"Edit";
         el = AppiumCommon.waitForVisible(driver,By.id("com.gystapp.gyst:id/task_dialog_details"));
         el.clear();
@@ -114,8 +114,8 @@ public class Task extends AppiumCommon{
         el.click(); //click Mark completed
 
         // Change priority
-        el = AppiumCommon.waitForVisible(driver,By.xpath("//android.widget.ImageView[following-sibling::android.widget.TextView[contains(@text,'"+taskName+"')]]"));
-        el.click();
+        el = AppiumCommon.waitForVisible(driver,By.id("com.gystapp.gyst:id/tasks_priority"));
+        el.click(); //!
 
                                             //SEARCH
 
@@ -165,8 +165,8 @@ public class Task extends AppiumCommon{
                                             //MANAGE
 
         // Change priority
-        el = AppiumCommon.waitForVisible(driver,By.xpath("//android.widget.ImageView[following-sibling::android.widget.TextView[contains(@text,'"+taskName+"')]]"));
-        el.click();
+        el = AppiumCommon.waitForVisible(driver,By.id("com.gystapp.gyst:id/tasks_priority"));
+        el.click(); //!
 
         //Delete
         driver.tap(1,driver.findElement(By.xpath("//android.widget.TextView[contains(@text,'"+taskName+"')]")),2000);

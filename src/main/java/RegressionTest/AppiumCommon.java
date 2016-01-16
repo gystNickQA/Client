@@ -58,6 +58,7 @@ public class AppiumCommon {
     protected String profileName = "SamsungG360"; //Your Name
     protected String jpgfileName = "jpgFile.jpg"; //file should be in Download folder
     protected String pngfileName = "pngFile.png"; //file should be in Download folder
+    protected String labelName = "Label1"; //label name
     public static String screenDirectory = "c:\\tmp\\"; //directory for screens
     //Changed while using release version
     protected String toAddMenu = "//android.widget.ImageView"; //menu where you can share and add contact to favorites
@@ -68,8 +69,8 @@ public class AppiumCommon {
     public static final String apkToTest = "0.10.4-release.apk";
     public static final String deviceToTestOn = "Samsung_g360";
     public static final String uidOfDevice = "4d005a57c0aa1200";
-    //public static final String deviceToTestOn = "sony-xperia_u";
-    //public static final String uidOfDevice = "YT9002N89S";
+    //public static final String deviceToTestOn = "motorola-nexus_6";
+    //public static final String uidOfDevice = "ZX1G22SC2N";
     public static final String platformVersionToTest = "4.4.4";
     public static final String appPackageName = "com.gystapp.gyst";
     public static final String appiumURL = "http://127.0.0.1:4723/wd/hub";

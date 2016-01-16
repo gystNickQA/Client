@@ -29,14 +29,16 @@ public class Labels extends AppiumCommon {
     @Test
     public void testLabels() throws Exception {
         System.out.println("Labels started:");
-        //Edit profile and Save
         WebElement sideBarIcon = AppiumCommon.waitForVisible(driver, By.id("com.gystapp.gyst:id/bt_drawer_open")); //Locate the SideBar Navigation Bar
         sideBarIcon.click(); // Side Bar open
         WebElement el = AppiumCommon.waitForVisible(driver, By.xpath("//android.widget.TextView[contains(@text,'Manage Labels')]"));
         el.click(); //click Manage Labels
 
-        if(AppiumCommon.isElementPresent(driver,By.xpath("//android.widget.TextView[contains(@text,'Label1')]"))){
-            el = AppiumCommon.waitForVisible(driver,By.xpath("//android.widget.TextView[contains(@text,'Label1')]")); //find element to swipe
+        el = AppiumCommon.waitForVisible(driver,By.id("com.gystapp.gyst:id/search_view_search"));
+        el.sendKeys(labelName); //make search by labelName
+        Thread.sleep(1000); //wait 1 sec
+        if(AppiumCommon.isElementPresent(driver,By.xpath("//android.widget.TextView[contains(@text,'"+labelName+"')]"))){
+            el = AppiumCommon.waitForVisible(driver,By.xpath("//android.widget.TextView[contains(@text,'"+labelName+"')]")); //find element to swipe
             Point elLocation = el.getLocation();
             int elHeight = el.getSize().getHeight();
             int screenWidth = driver.manage().window().getSize().getWidth();
@@ -53,6 +55,7 @@ public class Labels extends AppiumCommon {
                 el.click(); //click delete icon
                 el = AppiumCommon.waitForVisible(driver, By.id("com.gystapp.gyst:id/bt_positive"));
                 el.click();
+                System.out.println(labelName+" was deleted");
             }
         }
 
@@ -76,35 +79,30 @@ public class Labels extends AppiumCommon {
         el = AppiumCommon.waitForVisible(driver,By.id("com.gystapp.gyst:id/labels_management_add"));
         el.click(); //click +
         el = AppiumCommon.waitForVisible(driver,By.id("com.gystapp.gyst:id/et_input"));
-        el.sendKeys("Label1"); //input name of label
+        el.sendKeys(labelName); //input name of label
         el.click();
         driver.hideKeyboard();
         el = AppiumCommon.waitForVisible(driver,By.id("com.gystapp.gyst:id/bt_positive"));
         el.click(); //click Save
 
         //Check if label created
-        if(AppiumCommon.isElementPresent(driver,By.xpath("//android.widget.TextView[contains(@text,'Label1')]"))){
-            System.out.println("Label created correctly");
+        if(AppiumCommon.isElementPresent(driver,By.xpath("//android.widget.TextView[contains(@text,'"+labelName+"')]"))){
+            System.out.println(labelName+" created correctly");
         }
-        else {System.out.println("Label didn't created");}
+        else {System.out.println(labelName+" didn't created");}
 
-        el = AppiumCommon.waitForVisible(driver, By.xpath("//android.widget.TextView[contains(@text,'Label1')]"));
-        el.click(); //open label
-        el = AppiumCommon.waitForVisible(driver,By.id("com.gystapp.gyst:id/label_back_button"));
+        el = AppiumCommon.waitForVisible(driver,By.id("com.gystapp.gyst:id/labels_management_back"));
         el.click(); //return back to Inbox
 
         //Add label to dialog
-        el = AppiumCommon.waitForVisible(driver,By.id("com.gystapp.gyst:id/bt_toolbar_find"));
-        el.click(); //click search
-        el = AppiumCommon.waitForVisible(driver,By.id("com.gystapp.gyst:id/search_text"));
-        el.sendKeys(testContact); //enter TestContact
-        el = AppiumCommon.waitForVisible(driver,By.id("com.gystapp.gyst:id/search_save"));
-        el.click(); //Save
-        el = AppiumCommon.waitForVisible(driver,By.xpath("//android.widget.TextView[contains(@text,'" + testContact + "')]"));
-        new TouchAction(driver).longPress(el).release().perform();
+
+        el = AppiumCommon.waitForVisible(driver,By.id("com.gystapp.gyst:id/inbox_item_name"));
+        String dialogName = el.getText();
+        //new TouchAction(driver).longPress(el).release().perform();
+        driver.tap(1, el, 2000);
         el = AppiumCommon.waitForVisible(driver,By.id("com.gystapp.gyst:id/inbox_selected_items_options_archive"));
         el.click(); //click Label
-        el = AppiumCommon.waitForVisible(driver, By.xpath("//android.widget.TextView[contains(@text,'Label1')]"));
+        el = AppiumCommon.waitForVisible(driver, By.xpath("//android.widget.TextView[contains(@text,'" + labelName + "')]"));
         el.click(); //select Label1
         el = AppiumCommon.waitForVisible(driver, By.id("com.gystapp.gyst:id/labels_management_save"));
         el.click(); //click Save
@@ -112,17 +110,17 @@ public class Labels extends AppiumCommon {
         //Check result
         el = AppiumCommon.waitForVisible(driver, By.id("com.gystapp.gyst:id/bt_drawer_open")); //Locate the SideBar Navigation Bar
         el.click(); // Side Bar open
-        el = AppiumCommon.waitForVisible(driver, By.xpath("//android.widget.TextView[contains(@text,'Manage Labels')]"));
-        el.click(); //click Manage Labels
-        el = AppiumCommon.waitForVisible(driver, By.xpath("//android.widget.TextView[contains(@text,'Label1')]"));
+
+        scrollingDown();
+
+        el = AppiumCommon.waitForVisible(driver, By.xpath("//android.widget.TextView[contains(@text,'" + labelName+"')]"));
         el.click(); //click Manage Labels
 
-        WebElement message = AppiumCommon.waitForVisible(driver, By.xpath("//android.widget.TextView[contains(@text,'"+testContact+"')]"));
-        if(AppiumCommon.isElementPresent(driver,By.xpath("//android.widget.TextView[contains(@text,'"+testContact+"')]"))){
-            System.out.println("Label1 mark the message");
+        WebElement message = AppiumCommon.waitForVisible(driver, By.xpath("//android.widget.TextView[contains(@text,'"+dialogName+"')]"));
+        if(AppiumCommon.isElementPresent(driver,By.xpath("//android.widget.TextView[contains(@text,'"+dialogName+"')]"))){
+            System.out.println(labelName+" mark the message");
         }
-        else {System.out.println("Label1 didn't mark the message");}
-
+        else {System.out.println(labelName+" didn't mark the message");}
 
         System.out.println("---");
     }

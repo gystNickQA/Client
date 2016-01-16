@@ -34,7 +34,7 @@ public class Notifications extends AppiumCommon {
 
                                             // TASK NOTIFICATION
 
-        deleteAllFoundElements(By.id("com.gystapp.gyst:id/tasks_checkable_parent"), By.xpath("//android.widget.FrameLayout/android.widget.LinearLayout/android.widget.LinearLayout[4]"), "TaskNotification");
+        deleteAllFoundElements(By.id("com.gystapp.gyst:id/tasks_checkable_parent"), By.xpath("//android.widget.TextView[contains(@text,'Delete')]"), "TaskNotification");
         //Reset search criteria
         WebElement el = AppiumCommon.waitForVisible(driver,By.id("com.gystapp.gyst:id/bt_toolbar_find"));
         el.click(); //Click Search

@@ -120,6 +120,16 @@ public class Registration extends AppiumCommon{
             el.click(); //click NEXT
         }
 
+        //Make app by default
+        Thread.sleep(1000); //wait 1 sec
+        if(AppiumCommon.isElementPresent(driver,By.xpath("//android.widget.Button[contains(@text,'Yes')]"))){
+            el = AppiumCommon.waitForVisible(driver, By.xpath("//android.widget.Button[contains(@text,'Yes')]"));
+            el.click(); // Yes
+            el = AppiumCommon.waitForVisible(driver,By.id("android:id/button1"));
+            el.click(); // Yes
+
+        }
+
         //Make sure we ended up on the Inbox page
         el = AppiumCommon.waitForVisible(driver, By.className("android.widget.RadioGroup")); //Locate the Main Navigation Bar
         el.findElement(By.name("Inbox"));

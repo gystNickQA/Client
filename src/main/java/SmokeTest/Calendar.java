@@ -35,7 +35,7 @@ public class Calendar extends AppiumCommon {
 
                                             //CREATE NEW EVENT
 
-        deleteAllFoundElements(By.id("com.gystapp.gyst:id/events_search_item_root"), By.xpath("//android.widget.FrameLayout/android.widget.LinearLayout/android.widget.LinearLayout[4]"), eventName);
+        deleteAllFoundElements(By.id("com.gystapp.gyst:id/events_search_item_root"), By.xpath("//android.widget.TextView[contains(@text,'Delete Event')]"), eventName);
 
         //Create new event
         el = AppiumCommon.waitForVisible(driver,By.id("com.gystapp.gyst:id/bt_toolbar_add"));
@@ -58,10 +58,10 @@ public class Calendar extends AppiumCommon {
         el = AppiumCommon.waitForVisible(driver, By.xpath("//android.widget.TextView[contains(@text,'"+testContact+"')]"));
         el.click(); // Select test contact
         //Choose way to communicate
-        el = AppiumCommon.waitForVisible(driver, By.xpath("//android.widget.TextView[contains(@text,'"+testContactEmail+" (Other)')]"));
+        el = AppiumCommon.waitForVisible(driver, By.xpath("//android.widget.TextView[contains(@text,'" + testContactEmail + " (Other)')]"));
         el.click(); // Choose email address of contact
-        el = AppiumCommon.waitForVisible(driver, By.id("com.gystapp.gyst:id/bt_ok"));
-        el.click(); //OK on pop up window
+        /*el = AppiumCommon.waitForVisible(driver, By.id("com.gystapp.gyst:id/bt_ok"));
+        el.click(); //OK on pop up window*/
         el = AppiumCommon.waitForVisible(driver,By.xpath("//android.widget.Button[contains(@text,'OK')]"));
         el.click(); //OK
 
@@ -106,8 +106,9 @@ public class Calendar extends AppiumCommon {
         el.click(); //click Today
 
         //Context menu -> Reminder event
-        el = AppiumCommon.waitForVisible(driver, By.xpath("//android.widget.TextView[contains(@text,'" + eventName + "')]")); //Locate my event
-        new TouchAction(driver).longPress(el).release().perform();
+        AppiumCommon.waitForVisible(driver, By.xpath("//android.widget.TextView[contains(@text,'" + eventName + "')]")); //Locate my event
+        //new TouchAction(driver).longPress(el).release().perform();
+        driver.tap(1, driver.findElement(By.xpath("//android.widget.TextView[contains(@text,'" + eventName + "')]")), 2000);
         el = AppiumCommon.waitForVisible(driver, By.xpath("//android.widget.FrameLayout/android.widget.LinearLayout/android.widget.LinearLayout[3]"));
         el.click(); // Reminder event
         el = AppiumCommon.waitForVisible(driver, By.xpath("//android.widget.CheckedTextView[contains(@text,'1 hour')]"));
@@ -116,8 +117,9 @@ public class Calendar extends AppiumCommon {
         el.click(); //click Done
 
         //Context menu -> delete event
-        el = AppiumCommon.waitForVisible(driver, By.xpath("//android.widget.TextView[contains(@text,'" + eventName + "')]")); //Locate my event
-        new TouchAction(driver).longPress(el).release().perform();
+        AppiumCommon.waitForVisible(driver, By.xpath("//android.widget.TextView[contains(@text,'" + eventName + "')]")); //Locate my event
+        //new TouchAction(driver).longPress(el).release().perform();
+        driver.tap(1, driver.findElement(By.xpath("//android.widget.TextView[contains(@text,'" + eventName + "')]")), 2000);
         el = AppiumCommon.waitForVisible(driver, By.xpath("//android.widget.FrameLayout/android.widget.LinearLayout/android.widget.LinearLayout[4]"));
         el.click(); // Delete event
         System.out.println("Event was deleted");

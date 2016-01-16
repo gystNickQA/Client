@@ -57,7 +57,8 @@ public class Inbox extends AppiumCommon {
         for (Iterator<WebElement> i = eventList.iterator(); i.hasNext(); ) {
             contactEl = i.next();
             if(firstTime == true){
-                new TouchAction(driver).longPress(contactEl).release().perform();
+                //new TouchAction(driver).longPress(contactEl).release().perform();
+                driver.tap(1,contactEl, 2000);
                 firstTime = false;
             }
             else {contactEl.click();}
@@ -82,10 +83,10 @@ public class Inbox extends AppiumCommon {
         //Choose way to communicate
         Thread.sleep(1000); //wait 1 sec
         if(AppiumCommon.isElementPresent(driver,By.id("android:id/custom"))){
-            el = AppiumCommon.waitForVisible(driver, By.xpath("//android.widget.TextView[contains(@text,'"+testContactPhone+" (Other)')]"));
+            el = AppiumCommon.waitForVisible(driver, By.xpath("//android.widget.TextView[contains(@text,'" + testContactPhone + " (Other)')]"));
             el.click(); //select phone number
-            el = AppiumCommon.waitForVisible(driver, By.id("com.gystapp.gyst:id/bt_ok"));
-            el.click(); //click OK
+            /*el = AppiumCommon.waitForVisible(driver, By.id("com.gystapp.gyst:id/bt_ok"));
+            el.click(); //click OK*/
         }
         el = AppiumCommon.waitForVisible(driver,By.xpath("//android.widget.Button[contains(@text,'OK')]"));
         el.click(); //OK
@@ -137,8 +138,9 @@ public class Inbox extends AppiumCommon {
         el.click(); //out from message
 
         //Delete message
-        el = AppiumCommon.waitForVisible(driver,By.xpath("//android.widget.TextView[contains(@text,'"+messageContent+"')]"));
-        new TouchAction(driver).longPress(el).release().perform();
+        AppiumCommon.waitForVisible(driver, By.xpath("//android.widget.TextView[contains(@text,'" + messageContent + "')]"));
+        //new TouchAction(driver).longPress(el).release().perform();
+        driver.tap(1, driver.findElement(By.xpath("//android.widget.TextView[contains(@text,'"+messageContent+"')]")), 2000);
         el = AppiumCommon.waitForVisible(driver,By.id("com.gystapp.gyst:id/inbox_conversations_options_delete"));
         el.click(); //delete
         System.out.println("Message was deleted");
@@ -226,7 +228,7 @@ public class Inbox extends AppiumCommon {
         el.click(); //click search
         el = AppiumCommon.waitForVisible(driver, By.id("com.gystapp.gyst:id/search_reset"));
         el.click(); //click reset
-        el = AppiumCommon.waitForVisible(driver, By.xpath("//android.widget.CheckedTextView[contains(@text,'SMS')]"));
+        el = AppiumCommon.waitForVisible(driver, By.xpath("//android.widget.CheckedTextView[contains(@text,'non-Gyst')]"));
         el.click(); //click SMS
         el = AppiumCommon.waitForVisible(driver, By.id("com.gystapp.gyst:id/search_save"));
         el.click(); //Save
@@ -247,6 +249,16 @@ public class Inbox extends AppiumCommon {
         el = AppiumCommon.waitForVisible(driver, By.id("com.gystapp.gyst:id/search_reset"));
         el.click(); //click reset
         el = AppiumCommon.waitForVisible(driver, By.xpath("//android.widget.CheckedTextView[contains(@text,'Availabilities')]"));
+        el.click(); //click Availabilities
+        el = AppiumCommon.waitForVisible(driver, By.id("com.gystapp.gyst:id/search_save"));
+        el.click(); //Save
+
+        //Make search by Attachments in messages
+        el = AppiumCommon.waitForVisible(driver, By.id("com.gystapp.gyst:id/bt_toolbar_find"));
+        el.click(); //click search
+        el = AppiumCommon.waitForVisible(driver, By.id("com.gystapp.gyst:id/search_reset"));
+        el.click(); //click reset
+        el = AppiumCommon.waitForVisible(driver, By.xpath("//android.widget.CheckedTextView[contains(@text,'Attachments')]"));
         el.click(); //click Availabilities
         el = AppiumCommon.waitForVisible(driver, By.id("com.gystapp.gyst:id/search_save"));
         el.click(); //Save
@@ -283,8 +295,8 @@ public class Inbox extends AppiumCommon {
                 if(AppiumCommon.isElementPresent(driver,By.id("android:id/custom"))){
                     el = AppiumCommon.waitForVisible(driver, By.xpath("//android.widget.TextView[contains(@text,'"+testContactPhone+" (Other)')]"));
                     el.click(); //select phone number
-                    el = AppiumCommon.waitForVisible(driver, By.id("com.gystapp.gyst:id/bt_ok"));
-                    el.click(); //click OK
+                    /*el = AppiumCommon.waitForVisible(driver, By.id("com.gystapp.gyst:id/bt_ok"));
+                    el.click(); //click OK*/
                 }
                 el = AppiumCommon.waitForVisible(driver,By.xpath("//android.widget.Button[contains(@text,'OK')]"));
                 el.click(); //OK
@@ -306,14 +318,15 @@ public class Inbox extends AppiumCommon {
         }
 
         //Delete message
-        el = AppiumCommon.waitForVisible(driver,By.xpath("//android.widget.TextView[contains(@text,'"+messageContent+"2')]"));
-        new TouchAction(driver).longPress(el).release().perform();
+        AppiumCommon.waitForVisible(driver,By.xpath("//android.widget.TextView[contains(@text,'"+messageContent+"2')]"));
+        //new TouchAction(driver).longPress(el).release().perform();
+        driver.tap(1,driver.findElement(By.xpath("//android.widget.TextView[contains(@text,'"+messageContent+"2')]")),2000);
         el = AppiumCommon.waitForVisible(driver,By.id("com.gystapp.gyst:id/inbox_conversations_options_delete"));
         el.click(); // click delete icon
-        //Set priority on message
+        /*//Set priority on message
         AppiumCommon.waitForVisible(driver, By.xpath("//android.widget.TextView[contains(@text,'" + messageContent + "1')]"));
         driver.findElementByXPath("//android.widget.TextView[contains(@text,'"+messageContent+"1')]/following::android.widget.ImageView").click();
-        System.out.println("Set priority on message");
+        System.out.println("Set priority on message");*/
 
         driver.navigate().back(); // return to Inbox
 
