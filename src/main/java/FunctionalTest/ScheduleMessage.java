@@ -48,8 +48,8 @@ public class ScheduleMessage extends AppiumCommon {
         if(AppiumCommon.isElementPresent(driver,By.id("android:id/custom"))){
             el = AppiumCommon.waitForVisible(driver, By.xpath("//android.widget.TextView[contains(@text,'"+testContactPhone+" (Other)')]"));
             el.click(); //select phone number
-            el = AppiumCommon.waitForVisible(driver, By.id("com.gystapp.gyst:id/bt_ok"));
-            el.click(); //click OK
+            /*el = AppiumCommon.waitForVisible(driver, By.id("com.gystapp.gyst:id/bt_ok"));
+            el.click(); //click OK*/
         }
         el = AppiumCommon.waitForVisible(driver,By.xpath("//android.widget.Button[contains(@text,'OK')]"));
         el.click(); //OK

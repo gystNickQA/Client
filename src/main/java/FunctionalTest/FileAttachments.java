@@ -68,7 +68,8 @@ public class FileAttachments extends AppiumCommon {
         for (Iterator<WebElement> i = eventList.iterator(); i.hasNext(); ) {
             contactEl = i.next();
             if (firstTime == true) {
-                new TouchAction(driver).longPress(contactEl).release().perform();
+                //new TouchAction(driver).longPress(contactEl).release().perform();
+                driver.tap(1, contactEl, 2000);
                 firstTime = false;
             } else {
                 contactEl.click();
@@ -96,8 +97,8 @@ public class FileAttachments extends AppiumCommon {
         if(AppiumCommon.isElementPresent(driver,By.id("android:id/custom"))){
             el = AppiumCommon.waitForVisible(driver, By.xpath("//android.widget.TextView[contains(@text,'"+testContactPhone+" (Other)')]"));
             el.click(); //select phone number
-            el = AppiumCommon.waitForVisible(driver, By.id("com.gystapp.gyst:id/bt_ok"));
-            el.click(); //click OK
+            /*el = AppiumCommon.waitForVisible(driver, By.id("com.gystapp.gyst:id/bt_ok"));
+            el.click(); //click OK*/
         }
         el = AppiumCommon.waitForVisible(driver,By.xpath("//android.widget.Button[contains(@text,'OK')]"));
         el.click(); //OK

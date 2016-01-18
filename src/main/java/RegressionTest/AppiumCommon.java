@@ -314,7 +314,8 @@ public class AppiumCommon {
         page.click(); //open window where to make swipe
 
         WebElement el = AppiumCommon.waitForVisible(driver, elToSwipe); //find element to select
-        new TouchAction(driver).longPress(el).release().perform();
+        //new TouchAction(driver).longPress(el).release().perform();
+        driver.tap(1, el, 2000);
         Thread.sleep(1000);
         if(AppiumCommon.isElementPresent(driver,By.id("com.gystapp.gyst:id/inbox_selected_items_options_close")) || AppiumCommon.isElementPresent(driver,By.id("com.gystapp.gyst:id/bt_options_close")) ){
             //Make deselect

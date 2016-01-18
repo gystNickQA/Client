@@ -57,7 +57,8 @@ public class MessageAttachments extends AppiumCommon {
         for (Iterator<WebElement> i = eventList.iterator(); i.hasNext(); ) {
             contactEl = i.next();
             if(firstTime == true){
-                new TouchAction(driver).longPress(contactEl).release().perform();
+                //new TouchAction(driver).longPress(contactEl).release().perform();
+                driver.tap(1, contactEl, 2000);
                 firstTime = false;
             }
             else {contactEl.click();}
@@ -82,10 +83,10 @@ public class MessageAttachments extends AppiumCommon {
         //Choose way to communicate
         Thread.sleep(2000); //wait 1 sec
         if(AppiumCommon.isElementPresent(driver,By.id("android:id/custom"))){
-            el = AppiumCommon.waitForVisible(driver, By.xpath("//android.widget.TextView[contains(@text,'"+testContactPhone+" (Other)')]"));
+            el = AppiumCommon.waitForVisible(driver, By.xpath("//android.widget.TextView[contains(@text,'" + testContactPhone + " (Other)')]"));
             el.click(); //select phone number
-            el = AppiumCommon.waitForVisible(driver, By.id("com.gystapp.gyst:id/bt_ok"));
-            el.click(); //click OK
+            /*el = AppiumCommon.waitForVisible(driver, By.id("com.gystapp.gyst:id/bt_ok"));
+            el.click(); //click OK*/
         }
         el = AppiumCommon.waitForVisible(driver,By.xpath("//android.widget.Button[contains(@text,'OK')]"));
         el.click(); //OK
@@ -153,7 +154,7 @@ public class MessageAttachments extends AppiumCommon {
         el.click(); //Save
         el = AppiumCommon.waitForVisible(driver,By.id("com.gystapp.gyst:id/compose_menu_send"));
         el.click(); //Send
-        System.out.println("Second message was sent");
+        System.out.println("Second message with event was sent");
 
         //Reset search
         el = AppiumCommon.waitForVisible(driver,By.id("com.gystapp.gyst:id/bt_toolbar_find"));
@@ -174,7 +175,7 @@ public class MessageAttachments extends AppiumCommon {
         el = AppiumCommon.waitForVisible(driver,By.xpath("//android.widget.TextView[contains(@text,'" + messageContent + " Event')]"),180);
         el.click();
         if(AppiumCommon.isElementPresent(driver, By.xpath("//android.widget.TextView[contains(@text,'" + messageContent + " Event')]")) ){
-            System.out.println("Second message with event was checked");
+            System.out.println("Second message with event with event was checked");
         }
 
         else {System.out.println("Second message with event was not sent correctly");}

@@ -72,10 +72,10 @@ public class EventRecurrence extends AppiumCommon {
 
         driver.findElementById("com.gystapp.gyst:id/calendar_top_panel_month").click();// view month
         int interval = Integer.parseInt(currentDay);
-        driver.findElementByXPath("//android.widget.FrameLayout/android.widget.TextView[contains(@text,'"+interval+"')]").click();//select currentDay + Every 3 day
+        driver.findElementByXPath("//android.widget.FrameLayout/android.widget.TextView[contains(@text,'" + interval + "')]").click();//select currentDay + Every 7 day
         driver.findElementById("com.gystapp.gyst:id/calendar_top_panel_month").click();//hide month
         if(AppiumCommon.isElementPresent(driver,By.xpath("//android.widget.TextView[contains(@text,'Every7DayFor3Events')]"))){
-            firstIntervalDate = "First Interval Date presented";
+            firstIntervalDate = "First interval was created on "+interval+" day of month";
         }
 
         driver.findElementById("com.gystapp.gyst:id/calendar_top_panel_month").click();// view month
@@ -92,13 +92,12 @@ public class EventRecurrence extends AppiumCommon {
         el.click(); //select currentDay + Every _ day
         driver.findElementById("com.gystapp.gyst:id/calendar_top_panel_month").click();//hide month
         if(AppiumCommon.isElementPresent(driver,By.xpath("//android.widget.TextView[contains(@text,'Every7DayFor3Events')]"))){
-            secondIntervalDate = "Second Interval Date presented";
+            secondIntervalDate = "Second interval was created on "+interval+" day of month";
         }
 
         driver.findElementById("com.gystapp.gyst:id/calendar_top_panel_month").click();// view month
         if(interval + 7 > daysInMonth) {
             interval = (interval + 7) - daysInMonth;
-
             Point calendarGridLocation = driver.findElementById("com.gystapp.gyst:id/calendar_gridview").getLocation();
             int calendarGridWidth = driver.findElementById("com.gystapp.gyst:id/months_infinite_pager").getSize().getWidth();
             int setWidth = (int) (calendarGridWidth * 0.8);
@@ -109,7 +108,7 @@ public class EventRecurrence extends AppiumCommon {
         el.click(); //select currentDay + Every _ day
         driver.findElementById("com.gystapp.gyst:id/calendar_top_panel_month").click();//hide month
         if(AppiumCommon.isElementPresent(driver,By.xpath("//android.widget.TextView[contains(@text,'Every7DayFor3Events')]"))){
-            thirdIntervalDate = "Third Interval Date presented";
+            thirdIntervalDate = "Third interval was created on "+interval+" day of month";
         }
 
         System.out.println("Every7DayFor3Events were checked:");

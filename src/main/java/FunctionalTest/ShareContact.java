@@ -32,7 +32,8 @@ public class ShareContact extends AppiumCommon {
         el.sendKeys(testContact); //make search by phone
         driver.hideKeyboard();
         el = AppiumCommon.waitForVisible(driver, By.xpath("//android.widget.TextView[contains(@text,'"+testContact+"')]"));
-        new TouchAction(driver).longPress(el).release().perform();
+        //new TouchAction(driver).longPress(el).release().perform();
+        driver.tap(1, el, 2000);
         el = AppiumCommon.waitForVisible(driver, By.xpath("//android.widget.FrameLayout/android.widget.LinearLayout/android.widget.LinearLayout[2]"));
         el.click();//click share contact
 
