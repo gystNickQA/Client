@@ -63,14 +63,12 @@ public class Invite extends AppiumCommon {
             /*el = AppiumCommon.waitForVisible(driver, By.id("com.gystapp.gyst:id/bt_ok"));
             el.click(); //click OK*/
         }
-
-        el = AppiumCommon.waitForVisible(driver, By.id("com.gystapp.gyst:id/compose_menu_send"));
-        el.click(); //click Send message
+        el = AppiumCommon.waitForVisible(driver,By.id("com.gystapp.gyst:id/conversation_message_field"));
+        el.click(); //show keyboard
+        driver.hideKeyboard();
 
         //Check result
-        WebElement subject = AppiumCommon.waitForVisible(driver, By.id("com.gystapp.gyst:id/message_subject"));
-        WebElement message = AppiumCommon.waitForVisible(driver, By.id("com.gystapp.gyst:id/message_text"));
-        AppiumCommon.waitForSpecificTextValue(driver,subject,"Check out this new texting app!");
+        WebElement message = AppiumCommon.waitForVisible(driver, By.id("com.gystapp.gyst:id/conversation_message_field"));
         Boolean res = AppiumCommon.waitForValueMatchRegex(message, ".*https.*"); //make sure the message content have link on contact
         assertTrue("Invite message didn't contain the link", res);
         System.out.println("Contact was invited");

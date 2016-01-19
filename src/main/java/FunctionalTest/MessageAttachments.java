@@ -175,7 +175,7 @@ public class MessageAttachments extends AppiumCommon {
         el = AppiumCommon.waitForVisible(driver,By.xpath("//android.widget.TextView[contains(@text,'" + messageContent + " Event')]"),180);
         el.click();
         if(AppiumCommon.isElementPresent(driver, By.xpath("//android.widget.TextView[contains(@text,'" + messageContent + " Event')]")) ){
-            System.out.println("Second message with event with event was checked");
+            System.out.println("Second message with event was checked");
         }
 
         else {System.out.println("Second message with event was not sent correctly");}
