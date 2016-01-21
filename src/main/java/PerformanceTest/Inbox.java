@@ -18,7 +18,7 @@ public class Inbox extends AppiumCommon{
     }
 
     @Test
-    public void testCalendar() throws Exception {
+    public void testInbox() throws Exception {
         System.out.println("Inbox started:");
         WebElement el = AppiumCommon.waitForVisible(driver, By.className("android.widget.RadioGroup")); //Locate the Main Navigation Bar
         el.findElement(By.name("Inbox")).click();
@@ -42,8 +42,8 @@ public class Inbox extends AppiumCommon{
                 //Choose way to communicate
                 el = AppiumCommon.waitForVisible(driver, By.xpath("//android.widget.TextView[contains(@text,'"+testContactPhone+" (Other)')]"));
                 el.click(); //select phone number
-                el = AppiumCommon.waitForVisible(driver, By.id("com.gystapp.gyst:id/bt_ok"));
-                el.click(); //click OK
+                /*el = AppiumCommon.waitForVisible(driver, By.id("com.gystapp.gyst:id/bt_ok"));
+                el.click(); //click OK*/
                 el = AppiumCommon.waitForVisible(driver,By.xpath("//android.widget.Button[contains(@text,'OK')]"));
                 //el = AppiumCommon.waitForVisible(driver, By.id("com.gystapp.gyst:id/bt_approve"));
                 el.click(); //OK

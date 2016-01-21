@@ -8,8 +8,8 @@ import org.junit.runners.Suite;
 @Suite.SuiteClasses({
         //Task.class,
         //Calendar.class,
-        //Inbox.class,
-        FastSwitchHeader.class,
+        Inbox.class,
+        //FastSwitchHeader.class,
 }
 )
 public class TestSuitePerformance {
