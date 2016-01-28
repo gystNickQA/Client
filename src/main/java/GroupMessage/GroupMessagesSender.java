@@ -28,9 +28,9 @@ public class GroupMessagesSender {
     protected String phoneNumber = "636810727"; //phone number of Sender
     protected String profileName = "SamsungG360"; //Sender profile Name
 
-    protected String receiverContactName = "Sony"; //Receiver Contact Name (display name)
-    protected String receiverContactPhoneNumber = "+380990541957"; //Receiver Contact Phone Number(real number)
-    protected String anotherGystContactName = "Gyst3"; //Gyst3 Contact Name (display name)
+    protected String receiverContactName = "Nexus6"; //Receiver Contact Name (display name)
+    protected String receiverContactPhoneNumber = "+380688760946"; //Receiver Contact Phone Number(real number)
+    protected String anotherGystContactName = "Nick"; //Gyst3 Contact Name (display name)
     protected String anotherGystContactPhoneNumber = "+38986427920"; //Gyst3 Contact Phone Number(real number)
     protected String messageFromSender = "Message from Sender"; //counter of messageFromSender
     protected String messageFromReceiver = "Message from Receiver"; //message that send Receiver
@@ -53,7 +53,7 @@ public class GroupMessagesSender {
     protected String xpathToAddMenu = "//android.widget.ImageView"; //menu where you can share and add contact to favorites
 
     //Globals for the application to be tested
-    public static final String apkToTest = "0.9.0-release.apk";
+    public static final String apkToTest = "0.10.5-release.apk";
     public static final String deviceToTestOn = "samsung-sm_g360h";
     public static final String uidOfDevice = "4d005a57c0aa1200";
     public static final String platformVersionToTest = "4.4.4";
@@ -125,7 +125,8 @@ public class GroupMessagesSender {
         el.click(); //Click Save
         //Deleting first item until all items will be deleted
         while(AppiumCommon.isElementPresent(driver,By.id("com.gystapp.gyst:id/swipe_layout_content_view_id"))){
-            new TouchAction(driver).longPress(driver.findElement(By.id("com.gystapp.gyst:id/swipe_layout_content_view_id"))).release().perform();
+            //new TouchAction(driver).longPress(driver.findElement(By.id("com.gystapp.gyst:id/swipe_layout_content_view_id"))).release().perform();
+            driver.tap(1, driver.findElement(By.id("com.gystapp.gyst:id/swipe_layout_content_view_id")), 2000);
             el = AppiumCommon.waitForVisible(driver, By.id("com.gystapp.gyst:id/inbox_conversations_options_delete"));
             el.click(); //delete
             //Check if event recurrence and delete all
@@ -154,10 +155,10 @@ public class GroupMessagesSender {
         Thread.sleep(3000);
         if(AppiumCommon.isElementPresent(driver,By.id("android:id/custom"))){
             //Choose way to communicate
-            el = AppiumCommon.waitForVisible(driver, By.xpath("//android.widget.TextView[contains(@text,'"+receiverContactPhoneNumber+" (Other)')]"));
+            el = AppiumCommon.waitForVisible(driver, By.xpath("//android.widget.TextView[contains(@text,'" + receiverContactPhoneNumber + " (Other)')]"));
             el.click(); //select phone number
-            el = AppiumCommon.waitForVisible(driver, By.id("com.gystapp.gyst:id/bt_ok"));
-            el.click(); //click OK
+            /*el = AppiumCommon.waitForVisible(driver, By.id("com.gystapp.gyst:id/bt_ok"));
+            el.click(); //click OK*/
             el = AppiumCommon.waitForVisible(driver,By.xpath("//android.widget.Button[contains(@text,'OK')]"));
             el.click(); //OK
         }
@@ -278,10 +279,10 @@ public class GroupMessagesSender {
         Thread.sleep(3000);
         if(AppiumCommon.isElementPresent(driver,By.id("android:id/custom"))){
             //Choose way to communicate
-            el = AppiumCommon.waitForVisible(driver, By.xpath("//android.widget.TextView[contains(@text,'"+receiverContactPhoneNumber+" (Other)')]"));
+            el = AppiumCommon.waitForVisible(driver, By.xpath("//android.widget.TextView[contains(@text,'" + receiverContactPhoneNumber + " (Other)')]"));
             el.click(); //select phone number
-            el = AppiumCommon.waitForVisible(driver, By.id("com.gystapp.gyst:id/bt_ok"));
-            el.click(); //click OK
+            /*el = AppiumCommon.waitForVisible(driver, By.id("com.gystapp.gyst:id/bt_ok"));
+            el.click(); //click OK*/
             el = AppiumCommon.waitForVisible(driver,By.xpath("//android.widget.Button[contains(@text,'OK')]"));
             el.click(); //OK
         }
@@ -342,10 +343,10 @@ public class GroupMessagesSender {
         Thread.sleep(3000);
         if(AppiumCommon.isElementPresent(driver, By.id("android:id/custom"))){
             //Choose way to communicate
-            el = AppiumCommon.waitForVisible(driver, By.xpath("//android.widget.TextView[contains(@text,'"+anotherGystContactPhoneNumber+" (Other)')]"));
+            el = AppiumCommon.waitForVisible(driver, By.xpath("//android.widget.TextView[contains(@text,'" + anotherGystContactPhoneNumber + " (Other)')]"));
             el.click(); //select phone number
-            el = AppiumCommon.waitForVisible(driver, By.id("com.gystapp.gyst:id/bt_ok"));
-            el.click(); //click OK
+            /*el = AppiumCommon.waitForVisible(driver, By.id("com.gystapp.gyst:id/bt_ok"));
+            el.click(); //click OK*/
             el = AppiumCommon.waitForVisible(driver,By.xpath("//android.widget.Button[contains(@text,'OK')]"));
             el.click(); //OK
         }
@@ -451,10 +452,10 @@ public class GroupMessagesSender {
         Thread.sleep(3000);
         if(AppiumCommon.isElementPresent(driver, By.id("android:id/custom"))){
             //Choose way to communicate
-            el = AppiumCommon.waitForVisible(driver, By.xpath("//android.widget.TextView[contains(@text,'"+anotherGystContactPhoneNumber+" (Other)')]"));
+            el = AppiumCommon.waitForVisible(driver, By.xpath("//android.widget.TextView[contains(@text,'" + anotherGystContactPhoneNumber + " (Other)')]"));
             el.click(); //select phone number
-            el = AppiumCommon.waitForVisible(driver, By.id("com.gystapp.gyst:id/bt_ok"));
-            el.click(); //click OK
+            /*el = AppiumCommon.waitForVisible(driver, By.id("com.gystapp.gyst:id/bt_ok"));
+            el.click(); //click OK*/
             el = AppiumCommon.waitForVisible(driver,By.xpath("//android.widget.Button[contains(@text,'OK')]"));
             el.click(); //OK
         }
@@ -495,7 +496,7 @@ public class GroupMessagesSender {
 
         //Scenario 30: From Gyst1, in conversation 1
         Logging.update(logFileName, "Scenario 30 started:");
-        el = AppiumCommon.waitForVisible(driver,By.id("com.gystapp.gyst:id/conversation_message_field"));
+        el = AppiumCommon.waitForVisible(driver,By.id("com.gystapp.gyst:id/conversation_message_subject_field"));
         el.sendKeys(messageFromSender + counterMessageFromSender);
         el = AppiumCommon.waitForVisible(driver,By.id("com.gystapp.gyst:id/conversation_message_send"));
         el.click(); //Send
@@ -525,10 +526,10 @@ public class GroupMessagesSender {
         Thread.sleep(3000);
         if(AppiumCommon.isElementPresent(driver, By.id("android:id/custom"))){
             //Choose way to communicate
-            el = AppiumCommon.waitForVisible(driver, By.xpath("//android.widget.TextView[contains(@text,'"+testContactPhone+" (Other)')]"));
+            el = AppiumCommon.waitForVisible(driver, By.xpath("//android.widget.TextView[contains(@text,'" + testContactPhone + " (Other)')]"));
             el.click(); //select phone number
-            el = AppiumCommon.waitForVisible(driver, By.id("com.gystapp.gyst:id/bt_ok"));
-            el.click(); //click OK
+            /*el = AppiumCommon.waitForVisible(driver, By.id("com.gystapp.gyst:id/bt_ok"));
+            el.click(); //click OK*/
             el = AppiumCommon.waitForVisible(driver,By.xpath("//android.widget.Button[contains(@text,'OK')]"));
             el.click(); //OK
         }

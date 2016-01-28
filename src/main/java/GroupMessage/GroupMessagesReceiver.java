@@ -22,12 +22,12 @@ public class GroupMessagesReceiver {
     //Test Data
     protected AppiumDriver driver;
 
-    protected String phoneNumber = "990541957"; //phone number of Receiver
-    protected String profileName = "Sony"; //Receiver profile Name
+    protected String phoneNumber = "688760946"; //phone number of Receiver
+    protected String profileName = "Nexus6"; //Receiver profile Name
 
     protected String senderContactName = "SamsungG360"; //Sender Contact Name (display name)
     protected String senderContactPhoneNumber = "+380636810727"; //Sender Contact Phone Number(real number)
-    protected String anotherGystContactName = "Gyst3"; //Gyst3 Contact Name (display name)
+    protected String anotherGystContactName = "Nick"; //Gyst3 Contact Name (display name)
     protected String anotherGystContactPhoneNumber = "+38986427920"; //Gyst3 Contact Phone Number(real number)
     protected String messageFromSender = "Message from Sender"; //message that send Sender
     protected String messageFromReceiver = "Message from Receiver"; //message that send Receiver
@@ -47,9 +47,9 @@ public class GroupMessagesReceiver {
     protected String taskDetails = "TestTaskDetails"; //task Derails
 
     //Globals for the application to be tested
-    public static final String apkToTest = "0.9.0-release.apk";
-    public static final String deviceToTestOn = "sony-xperia_u";
-    public static final String uidOfDevice = "YT9002N89S";
+    public static final String apkToTest = "0.10.5-release.apk";
+    public static final String deviceToTestOn = "motorola-nexus";
+    public static final String uidOfDevice = "ZX1G22SC2N";
     public static final String platformVersionToTest = "4.4.4";
     public static final String appPackageName = "com.gystapp.gyst";
     public static final String appiumURL = "http://127.0.0.1:4725/wd/hub";
@@ -119,7 +119,8 @@ public class GroupMessagesReceiver {
         el.click(); //Click Save
         //Deleting first item until all items will be deleted
         while(AppiumCommon.isElementPresent(driver,By.id("com.gystapp.gyst:id/swipe_layout_content_view_id"))){
-            new TouchAction(driver).longPress(driver.findElement(By.id("com.gystapp.gyst:id/swipe_layout_content_view_id"))).release().perform();
+            //new TouchAction(driver).longPress(driver.findElement(By.id("com.gystapp.gyst:id/swipe_layout_content_view_id"))).release().perform();
+            driver.tap(1, driver.findElement(By.id("com.gystapp.gyst:id/swipe_layout_content_view_id")), 2000);
             el = AppiumCommon.waitForVisible(driver, By.id("com.gystapp.gyst:id/inbox_conversations_options_delete"));
             el.click(); //delete
             //Check if event recurrence and delete all
@@ -185,7 +186,8 @@ public class GroupMessagesReceiver {
         el.click(); //reset search
         el = AppiumCommon.waitForVisible(driver,By.id("com.gystapp.gyst:id/search_save"));
         el.click(); //save
-        el = AppiumCommon.waitForVisible(driver,By.id("com.gystapp.gyst:id/conversation_message_field"));
+
+        el = AppiumCommon.waitForVisible(driver,By.id("com.gystapp.gyst:id/conversation_message_subject_field"));
         el.sendKeys(messageFromReceiver + counterMessageFromReceiver);
         el = AppiumCommon.waitForVisible(driver,By.id("com.gystapp.gyst:id/conversation_message_send"));
         el.click(); //Send
@@ -260,7 +262,7 @@ public class GroupMessagesReceiver {
 
         //Scenario 19: From Gyst2, in conversation2 To Gyst1 with Subject2
         Logging.update(logFileName, "Scenario 19 started:");
-        el = AppiumCommon.waitForVisible(driver,By.id("com.gystapp.gyst:id/conversation_message_field"));
+        el = AppiumCommon.waitForVisible(driver,By.id("com.gystapp.gyst:id/conversation_message_subject_field"));
         el.sendKeys(messageFromReceiver + counterMessageFromReceiver);
         el = AppiumCommon.waitForVisible(driver,By.id("com.gystapp.gyst:id/conversation_message_send"));
         el.click(); //Send
@@ -304,12 +306,14 @@ public class GroupMessagesReceiver {
         el = AppiumCommon.waitForVisible(driver,By.id("com.gystapp.gyst:id/conversation_header_back_button"));
         el.click(); //return back
         el = AppiumCommon.waitForVisible(driver,By.xpath("//android.widget.TextView[contains(@text,'"+messageSubject+"2')]"));
-        new TouchAction(driver).longPress(el).release().perform();// select dialog
+        //new TouchAction(driver).longPress(el).release().perform();// select dialog
+        driver.tap(1,el, 2000);
         el = AppiumCommon.waitForVisible(driver,By.id("com.gystapp.gyst:id/inbox_selected_items_options_overflow"));
-        int elHeight = el.getSize().getHeight();
-        Point elPosition = el.getLocation();
+        //int elHeight = el.getSize().getHeight();
+        //Point elPosition = el.getLocation();
         el.click(); //open additional menu
-        new TouchAction(driver).press(elPosition.getX()-10,elPosition.getY()+(elHeight*6)).release().perform(); //click to Leave conversation
+        el = AppiumCommon.waitForVisible(driver,By.xpath("//android.widget.CheckedTextView[contains(@text,'Leave conversation')]"));
+        el.click(); //click Leave conversation
         Logging.update(logFileName, "Participants change: " + profileName + " has left the conversation");
         Logging.update(logFileName, "Topic: " + messageSubject + "2");
         Logging.update(logFileName, "");
@@ -317,13 +321,14 @@ public class GroupMessagesReceiver {
         //Scenario 23: Gyst2 rejoins to conversation 1
         Logging.update(logFileName, "Scenario 23 started:");
         el = AppiumCommon.waitForVisible(driver, By.xpath("//android.widget.TextView[contains(@text,'" + messageSubject + "2')]"));
-        new TouchAction(driver).longPress(el).release().perform();// select dialog
+        //new TouchAction(driver).longPress(el).release().perform();// select dialog
+        driver.tap(1, el, 2000);
         el = AppiumCommon.waitForVisible(driver, By.id("com.gystapp.gyst:id/inbox_selected_items_options_overflow"));
-        elHeight = el.getSize().getHeight();
-        elPosition = el.getLocation();
         el.click(); //open additional menu
-        new TouchAction(driver).press(elPosition.getX()-10,elPosition.getY()+(elHeight*6)).release().perform(); //click Rejoin conversation
-
+        el = AppiumCommon.waitForVisible(driver,By.xpath("//android.widget.CheckedTextView[contains(@text,'Rejoin conversation')]"));
+        el.click(); //click Leave conversation
+        //new TouchAction(driver).press(elPosition.getX()-10,elPosition.getY()+(elHeight*8)).release().perform(); //click Rejoin conversation
+        Thread.sleep(1000); //wait 1 sec
         while (!AppiumCommon.isElementPresent(driver,By.xpath("//android.widget.TextView[contains(@text,'"+ messageSubject +"2')]"))){
             Thread.sleep(4000); //wait 4 second and refresh the screen
             el = AppiumCommon.waitForVisible(driver,By.id("com.gystapp.gyst:id/bt_toolbar_find"));
@@ -413,7 +418,7 @@ public class GroupMessagesReceiver {
 
         //Scenario 29: From Gyst2, in conversation 1
         Logging.update(logFileName, "Scenario 29 started:");
-        el = AppiumCommon.waitForVisible(driver,By.id("com.gystapp.gyst:id/conversation_message_field"));
+        el = AppiumCommon.waitForVisible(driver,By.id("com.gystapp.gyst:id/conversation_message_subject_field"));
         el.sendKeys(messageFromReceiver + counterMessageFromReceiver);
         el = AppiumCommon.waitForVisible(driver,By.id("com.gystapp.gyst:id/conversation_message_send"));
         el.click(); //Send
