@@ -42,8 +42,9 @@ public class Archiving extends AppiumCommon {
             el = AppiumCommon.waitForVisible(driver, By.xpath("//android.widget.TextView[contains(@text,'1 week')]"));
             el.click(); //select 1 day
         }
-        el = AppiumCommon.waitForVisible(driver,By.id("com.gystapp.gyst:id/bt_save"));
-        el.click(); //SAVE
+
+        el = AppiumCommon.waitForVisible(driver,By.xpath("//android.widget.ImageButton"));
+        el.click(); // return back
 
         WebElement listElement = AppiumCommon.waitForVisible(driver, By.className("android.widget.RadioGroup")); //Locate the Main Navigation Bar
         //Go to Inbox Main Page
@@ -52,6 +53,7 @@ public class Archiving extends AppiumCommon {
         //Find old messages
         el = AppiumCommon.waitForVisible(driver,By.id("com.gystapp.gyst:id/bt_toolbar_find"));
         el.click(); //click search
+        scrollingDown();
         el = AppiumCommon.waitForVisible(driver,By.xpath("//android.widget.RadioButton[contains(@text,'Oldest at the top')]"));
         el.click(); //click Oldest at the top
         el = AppiumCommon.waitForVisible(driver,By.id("com.gystapp.gyst:id/search_save"));

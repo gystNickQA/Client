@@ -109,8 +109,6 @@ public class Settings extends AppiumCommon {
                 break;
             }
         }
-        el = AppiumCommon.waitForVisible(driver,By.id("com.gystapp.gyst:id/bt_save"));
-        el.click(); //Save
 
         System.out.println("Settings were changed");
         System.out.println("---");

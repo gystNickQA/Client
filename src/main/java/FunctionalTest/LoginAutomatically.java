@@ -35,8 +35,8 @@ public class LoginAutomatically extends AppiumCommon {
         //Login automatically
         el = AppiumCommon.waitForVisible(driver, By.xpath("//android.widget.TextView[contains(@text,'Login automatically')]/following-sibling::android.widget.CompoundButton"));
         el.click(); //click to off
-        el = AppiumCommon.waitForVisible(driver,By.id("com.gystapp.gyst:id/bt_save"));
-        el.click(); //Save
+        el = AppiumCommon.waitForVisible(driver,By.xpath("//android.widget.ImageButton"));
+        el.click(); // return back
 
         //Reopen app
         driver.closeApp();

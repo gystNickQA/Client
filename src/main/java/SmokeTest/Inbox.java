@@ -162,6 +162,7 @@ public class Inbox extends AppiumCommon {
         //Make search by Oldest at the top
         el = AppiumCommon.waitForVisible(driver,By.id("com.gystapp.gyst:id/bt_toolbar_find"));
         el.click(); //Click Search
+        scrollingDown();
         el = AppiumCommon.waitForVisible(driver,By.xpath("//android.widget.RadioButton[contains(@text,'Oldest at the top')]"));
         el.click();
         el = AppiumCommon.waitForVisible(driver,By.id("com.gystapp.gyst:id/search_save"));
