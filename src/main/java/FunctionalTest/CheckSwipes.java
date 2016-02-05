@@ -41,7 +41,7 @@ public class CheckSwipes extends AppiumCommon {
 
         WebElement el = AppiumCommon.waitForVisible(driver,By.id("com.gystapp.gyst:id/tab_inbox"));
         el.click(); //open Inbox
-        swipeElement(By.id("com.gystapp.gyst:id/swipe_layout_content_view_id"),By.id("com.gystapp.gyst:id/swipe_layout_content_view_id"));
+        swipeElement(By.id("com.gystapp.gyst:id/swipe_layout_content_view_id"),By.xpath("//android.widget.ListView[contains(@resource-id,'com.gystapp.gyst:id/conversation_thread')]/android.widget.FrameLayout[last()]"));
         el = AppiumCommon.waitForVisible(driver,By.id("com.gystapp.gyst:id/conversation_header_back_button"));
         el.click(); //returned back
 

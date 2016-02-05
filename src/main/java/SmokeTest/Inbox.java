@@ -338,7 +338,7 @@ public class Inbox extends AppiumCommon {
         el.click(); // TO:
         el = AppiumCommon.waitForVisible(driver, By.id("com.gystapp.gyst:id/tv_search"));
         el.sendKeys("1111111"); //enter testContact to search
-        el = AppiumCommon.waitForVisible(driver, By.id("com.gystapp.gyst:id/bt_search_clear"));
+        el = AppiumCommon.waitForVisible(driver, By.id("com.gystapp.gyst:id/bt_search_action"));
         el.click(); // click +
         el = AppiumCommon.waitForVisible(driver,By.xpath("//android.widget.Button[contains(@text,'OK')]"));
         el.click(); //OK

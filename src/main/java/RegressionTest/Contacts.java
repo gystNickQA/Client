@@ -84,7 +84,8 @@ public class Contacts extends AppiumCommon {
         el.sendKeys(testContactPhone);
         el.click();
         driver.hideKeyboard();
-        scrollDown(driver.findElementById("com.gystapp.gyst:id/lv_contact_fields"));
+        scrollingDown();
+        //scrollDown(driver.findElementById("com.gystapp.gyst:id/lv_contact_fields"));
 
         //Add Email
         el = AppiumCommon.waitForVisible(driver,By.xpath("//android.widget.Button[contains(@text,'Add email')]"));

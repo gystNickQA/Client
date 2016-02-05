@@ -66,7 +66,7 @@ public class AppiumCommon {
     public static File file;
 
     //Globals for the application to be tested
-    public static final String apkToTest = "0.10.6-release.apk";
+    public static final String apkToTest = "0.10.7-release.apk";
     public static final String deviceToTestOn = "Samsung_g360";
     public static final String uidOfDevice = "4d005a57c0aa1200";
     //public static final String deviceToTestOn = "motorola-nexus_6";
@@ -260,7 +260,7 @@ public class AppiumCommon {
         WebElement page = AppiumCommon.waitForVisible(driver,checkLocationPage);
         String text = page.getText();
         page.click(); //open window where to make swipe
-
+        Thread.sleep(1000);
         WebElement el = AppiumCommon.waitForVisible(driver,elToSwipe); //find element to swipe
         Point elLocation = el.getLocation();
         int elHeight = el.getSize().getHeight();
@@ -280,7 +280,10 @@ public class AppiumCommon {
             else{System.out.println("Swipe in " + page.getText() + " is working");}
         }
         else{
-            System.out.println("Swipe in "+page.getText()+" didn't work");
+            if(text.equals("")){
+                System.out.println("Swipe in Conversation didn't work");
+            }
+            else{System.out.println("Swipe in " + page.getText() + " didn't work");}
         }
     }
 

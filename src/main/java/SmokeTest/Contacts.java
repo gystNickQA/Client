@@ -38,7 +38,7 @@ public class Contacts extends AppiumCommon {
             el = AppiumCommon.waitForVisible(driver, By.id("com.gystapp.gyst:id/bt_positive"));
             el.click(); //confirm deleting
         }
-        el = AppiumCommon.waitForVisible(driver,By.id("com.gystapp.gyst:id/bt_search_clear"));
+        el = AppiumCommon.waitForVisible(driver,By.id("com.gystapp.gyst:id/bt_search_action"));
         el.click(); //clear search
 
                                             //CREATE NEW CONTACT
@@ -142,7 +142,7 @@ public class Contacts extends AppiumCommon {
         else {System.out.println("Contact was not edited");}
         AppiumCommon.waitForVisible(driver, By.id("com.gystapp.gyst:id/action_toolbar"));
         driver.navigate().back(); //back link
-        el = AppiumCommon.waitForVisible(driver,By.id("com.gystapp.gyst:id/bt_search_clear"));
+        el = AppiumCommon.waitForVisible(driver,By.id("com.gystapp.gyst:id/bt_search_action"));
         el.click(); //clear search field
 
 
@@ -159,7 +159,7 @@ public class Contacts extends AppiumCommon {
             el = AppiumCommon.waitForVisible(driver, By.id("com.gystapp.gyst:id/bt_positive"));
             el.click(); //confirm deleting
         }
-        el = AppiumCommon.waitForVisible(driver,By.id("com.gystapp.gyst:id/bt_search_clear"));
+        el = AppiumCommon.waitForVisible(driver,By.id("com.gystapp.gyst:id/bt_search_action"));
         el.click(); //clear search
 
         el = AppiumCommon.waitForVisible(driver,By.id("com.gystapp.gyst:id/bt_toolbar_add"));
@@ -220,7 +220,7 @@ public class Contacts extends AppiumCommon {
         el.click(); //click Add to favorites
         AppiumCommon.waitForVisible(driver,By.id("com.gystapp.gyst:id/action_toolbar"));
         driver.navigate().back(); //back link
-        el = AppiumCommon.waitForVisible(driver, By.id("com.gystapp.gyst:id/bt_search_clear"));
+        el = AppiumCommon.waitForVisible(driver, By.id("com.gystapp.gyst:id/bt_search_action"));
         el.click(); //clear search
 
         //Check result

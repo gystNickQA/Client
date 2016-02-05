@@ -106,6 +106,8 @@ public class Calendar extends AppiumCommon {
         el.click(); //click Today
 
         //Context menu -> Reminder event
+        el = AppiumCommon.waitForVisible(driver, By.id("com.gystapp.gyst:id/calendar_top_panel_list_button"));
+        el.click(); //list view
         AppiumCommon.waitForVisible(driver, By.xpath("//android.widget.TextView[contains(@text,'" + eventName + "')]")); //Locate my event
         //new TouchAction(driver).longPress(el).release().perform();
         driver.tap(1, driver.findElement(By.xpath("//android.widget.TextView[contains(@text,'" + eventName + "')]")), 2000);

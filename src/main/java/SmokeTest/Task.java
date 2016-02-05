@@ -44,9 +44,9 @@ public class Task extends AppiumCommon{
         el.click(); //click Save
         //Error message appear
         if(AppiumCommon.isElementPresent(driver, By.id("com.gystapp.gyst:id/notification_dialog_message"))){
-            System.out.println("Error message appear");
+            System.out.println("Correct error message appear");
         }
-        else {System.out.println("Error message was not appeared");}
+        else {System.out.println("Correct error message was not appeared");}
 
         el = AppiumCommon.waitForVisible(driver,By.id("com.gystapp.gyst:id/notification_dialog_ok_button"));
         el.click(); //click OK

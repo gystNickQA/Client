@@ -102,6 +102,8 @@ public class Labels extends AppiumCommon {
         driver.tap(1, el, 2000);
         el = AppiumCommon.waitForVisible(driver,By.id("com.gystapp.gyst:id/inbox_selected_items_options_archive"));
         el.click(); //click Label
+        el = AppiumCommon.waitForVisible(driver, By.id("com.gystapp.gyst:id/search_view_search"));
+        el.sendKeys(labelName); //search Label1
         el = AppiumCommon.waitForVisible(driver, By.xpath("//android.widget.TextView[contains(@text,'" + labelName + "')]"));
         el.click(); //select Label1
         el = AppiumCommon.waitForVisible(driver, By.id("com.gystapp.gyst:id/labels_management_save"));
@@ -111,6 +113,7 @@ public class Labels extends AppiumCommon {
         el = AppiumCommon.waitForVisible(driver, By.id("com.gystapp.gyst:id/bt_drawer_open")); //Locate the SideBar Navigation Bar
         el.click(); // Side Bar open
 
+        scrollingDown();
         scrollingDown();
 
         el = AppiumCommon.waitForVisible(driver, By.xpath("//android.widget.TextView[contains(@text,'" + labelName+"')]"));

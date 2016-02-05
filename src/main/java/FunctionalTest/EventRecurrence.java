@@ -36,13 +36,15 @@ public class EventRecurrence extends AppiumCommon {
         listElement.findElement(By.name("Calendar")).click();
 
                                             //CREATE NEW EVENT
+        WebElement el = AppiumCommon.waitForVisible(driver, By.id("com.gystapp.gyst:id/calendar_top_panel_list_button"));
+        el.click(); //list view
 
         driver.findElementById("com.gystapp.gyst:id/bt_toolbar_add").click(); // click +
         //Event name
         driver.findElementById("com.gystapp.gyst:id/calendar_event_name").sendKeys("Every7DayFor3Events");
         driver.hideKeyboard();
 
-        WebElement el = AppiumCommon.waitForVisible(driver, By.id("com.gystapp.gyst:id/event_all_day_switch"));
+        el = AppiumCommon.waitForVisible(driver, By.id("com.gystapp.gyst:id/event_all_day_switch"));
         el.click(); // Set All day
 
         //Set the recurrent
